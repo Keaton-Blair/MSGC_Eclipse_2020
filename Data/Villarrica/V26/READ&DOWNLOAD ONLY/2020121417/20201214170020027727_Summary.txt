@@ -1,0 +1,61 @@
+Radiosonde Summary
+ Date: 14/12/2020
+ Time: 4:32 PM GMT
+ Reference No. : 022_001
+
+Location:
+ Octant    : 10 
+ Latitude  : S 39°18' 27.35''
+ Longitude : W 72°06' 18.26''
+
+Flight Information:
+ Station No.  :       
+ Station Name :       
+ Sonde Type   : DFM-09
+ Sonde No.    : 20027727
+
+Surface:
+Pres[mb]     Temp[°C]     DewP[°C]     R.H.[%]     Wd[deg]     Ws[kn]      Clouds
+ 984.2         11.0        10.8          99         000         0.0       9////
+
+Freezing Level:
+Pres[mb]     Height[m]     DEWP[°C]
+ 777.2        2213         -0.9
+
+Tropopauses
+Pres[mb]     Height[m]     Temp[°C]     Hu[%]      DEWP[°C]
+ 225.0       11146         -52.8         32        -61.4
+
+Maximum Wind Level
+Pres[mb]     Height[m]     Temp[°C]     Hu[%]      Wd[deg]      Ws[kn]
+ 253.8       10364         -48.3         33          260       124.5
+
+Standard Level
+Pres[mb]     Height[m]     Temp[°C]     Hu[%]      Dew[°C]     Wd[deg]      Ws[kn]
+ 984             276        11.0          99        10.8           0         0.0
+ 925             792         8.7          97         8.2         311        15.0
+ 850            1489         5.0          96         4.4         267        21.8
+ 700            3046        -4.9          93        -5.9         243        37.9
+ 500            5613       -18.3          22       -33.4         241        62.8
+ 400            7243       -29.1          20       -43.7         235        80.8
+ 300            9245       -41.1          25       -52.8         258       108.2
+ 250           10462       -48.9          33       -57.7         259       122.3
+ 200           11911       -52.1          25       -62.4         251        71.7
+ 150                       -59.1          10       -74.9                        
+ 100                       -56.6           3       -80.9         247        31.6
+  70           19821       -58.9           2       -83.3         236        23.2
+  50           21960       -53.1           2       -79.3         163        11.3
+  30           25256       -51.8           2       -78.0          88        24.1
+  20           27928       -48.7           3       -75.2          99        35.4
+  10           32562       -37.4           3       -65.8         101        48.5
+
+Highest Level
+Pres[mb]     Height[m]     Temp[°C]     Hu[%]      Dew[°C]     Wd[deg]      Ws[kn]
+   9.8         32768        -38.3           3       -65.4         091        50.7
+
+Ascension Rates
+Surface - 200 hPa       :   5.4 m/s      19 km/h    323 m/min
+Surface - 400 hPa       :   5.3 m/s      19 km/h    317 m/min
+
+Termination Reason:
+Terminated by User (TU)

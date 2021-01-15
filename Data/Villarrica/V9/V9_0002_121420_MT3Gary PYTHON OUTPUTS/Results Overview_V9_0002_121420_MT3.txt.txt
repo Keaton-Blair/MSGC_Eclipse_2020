@@ -1,0 +1,22 @@
+Results Overview Data: 
+
+
+Unable to detect layer stability, possibly due to corrupt data
+Calculated PBL height using VPT Method:745
+Calculated PBL height using RI Method: 1064 meters
+Calculated PBL height using PT Method: 1247 meters
+Calculated PBL height using SH Method: 2856 meters
+
+Lapse Rates
+      -Lapse Rate to PBL: -8.333
+
+Mean Rise Rate: 4.2655 m/s
+Mean Rise Rate in Target Alt Range: 4.2541 m/s
+Max Altitude Reached: 37.058 Km
+
+Tropopause Location: 13.409,0.000Km
+
+Last Known Location
+    -Longitude: -71.63919
+    -Latitude: -38.73126
+    -Altitude: 33598.000 Meters

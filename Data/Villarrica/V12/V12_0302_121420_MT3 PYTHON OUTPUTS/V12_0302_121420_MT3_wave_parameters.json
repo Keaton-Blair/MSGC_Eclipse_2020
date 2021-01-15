@@ -1,0 +1,421 @@
+{
+    "waves": {
+        "wave1": {
+            "Altitude [km]": 13.203,
+            "Latitude [deg]": -39.02643932806324,
+            "Longitude [deg]": -71.2877914347826,
+            "Date and Time [UTC]": "2020-12-14 03:53:16.296443",
+            "Vertical wavelength [km]": 4.644569953586025,
+            "Horizontal wavelength [km]": 279.8572924879853,
+            "Propagation direction [deg]": -23.78912921272052,
+            "Axial ratio [no units]": 3.9751868895637896,
+            "Intrinsic vertical group velocity [m/s]": -0.2527746511128792,
+            "Intrinsic horizontal group velocity [m/s]": 15.230867481159844,
+            "Intrinsic vertical phase speed [m/s]": 0.2698515838834424,
+            "Intrinsic horizontal phase speed [m/s]": 16.259833395534606,
+            "Degree of Polarization [no units]": 0.8882790472973723
+        },
+        "wave2": {
+            "Altitude [km]": 18.178,
+            "Latitude [deg]": -38.95695,
+            "Longitude [deg]": -71.07254825,
+            "Date and Time [UTC]": "2020-12-14 04:12:16.750000",
+            "Vertical wavelength [km]": 1.522212763341163,
+            "Horizontal wavelength [km]": 480.64930991445686,
+            "Propagation direction [deg]": 44.37460009691342,
+            "Axial ratio [no units]": 1.2839192178767616,
+            "Intrinsic vertical group velocity [m/s]": -0.011219783122865794,
+            "Intrinsic horizontal group velocity [m/s]": 3.5427248708376955,
+            "Intrinsic vertical phase speed [m/s]": 0.028522286126180435,
+            "Intrinsic horizontal phase speed [m/s]": 9.006111020669954,
+            "Degree of Polarization [no units]": 0.9833631437787126
+        },
+        "wave3": {
+            "Altitude [km]": 20.488,
+            "Latitude [deg]": -38.938536,
+            "Longitude [deg]": -71.0445424,
+            "Date and Time [UTC]": "2020-12-14 04:20:55.400000",
+            "Vertical wavelength [km]": 2.7319290604539423,
+            "Horizontal wavelength [km]": 753.3899769036504,
+            "Propagation direction [deg]": -76.01033711113551,
+            "Axial ratio [no units]": 1.1851498933401396,
+            "Intrinsic vertical group velocity [m/s]": -0.013605027563042441,
+            "Intrinsic horizontal group velocity [m/s]": 3.7518878326185128,
+            "Intrinsic vertical phase speed [m/s]": 0.04723253879502583,
+            "Intrinsic horizontal phase speed [m/s]": 13.025419227383779,
+            "Degree of Polarization [no units]": 0.7939054895396322
+        },
+        "wave4": {
+            "Altitude [km]": 24.438,
+            "Latitude [deg]": -38.9291486,
+            "Longitude [deg]": -71.0944868,
+            "Date and Time [UTC]": "2020-12-14 04:34:21.200000",
+            "Vertical wavelength [km]": 1.1486346768315843,
+            "Horizontal wavelength [km]": 97.86703352434924,
+            "Propagation direction [deg]": 234.8747687775345,
+            "Axial ratio [no units]": 2.035354194157179,
+            "Intrinsic vertical group velocity [m/s]": -0.025867279940454787,
+            "Intrinsic horizontal group velocity [m/s]": 2.2039678969986367,
+            "Intrinsic vertical phase speed [m/s]": 0.034098276875659056,
+            "Intrinsic horizontal phase speed [m/s]": 2.905272906541338,
+            "Degree of Polarization [no units]": 0.9586472846763845
+        },
+        "wave5": {
+            "Altitude [km]": 21.338,
+            "Latitude [deg]": -38.9372624,
+            "Longitude [deg]": -71.05002739999999,
+            "Date and Time [UTC]": "2020-12-14 04:23:51.800000",
+            "Vertical wavelength [km]": 0.8481668614388256,
+            "Horizontal wavelength [km]": 71.03981899409767,
+            "Propagation direction [deg]": 189.27834933470848,
+            "Axial ratio [no units]": 1.7331812133002111,
+            "Intrinsic vertical group velocity [m/s]": -0.014305522507851838,
+            "Intrinsic horizontal group velocity [m/s]": 1.1981860831603397,
+            "Intrinsic vertical phase speed [m/s]": 0.02144430204038703,
+            "Intrinsic horizontal phase speed [m/s]": 1.7961080592320806,
+            "Degree of Polarization [no units]": 0.6822278812444699
+        },
+        "wave6": {
+            "Altitude [km]": 6.578,
+            "Latitude [deg]": -39.224395,
+            "Longitude [deg]": -71.77820200000001,
+            "Date and Time [UTC]": "2020-12-14 03:26:37",
+            "Vertical wavelength [km]": 1.4110753435850063,
+            "Horizontal wavelength [km]": 15.928713774462278,
+            "Propagation direction [deg]": 83.27723866064757,
+            "Axial ratio [no units]": 2.6275468709896623,
+            "Intrinsic vertical group velocity [m/s]": -0.04653855023320909,
+            "Intrinsic horizontal group velocity [m/s]": 0.5253434903481925,
+            "Intrinsic vertical phase speed [m/s]": 0.05442109258751664,
+            "Intrinsic horizontal phase speed [m/s]": 0.6143243952641865,
+            "Degree of Polarization [no units]": 0.9642433497289566
+        },
+        "wave7": {
+            "Altitude [km]": 26.478,
+            "Latitude [deg]": -38.923334000000004,
+            "Longitude [deg]": -71.15531080000001,
+            "Date and Time [UTC]": "2020-12-14 04:41:06.200000",
+            "Vertical wavelength [km]": 0.6195510301551657,
+            "Horizontal wavelength [km]": 45.209824983433634,
+            "Propagation direction [deg]": -78.81426394112182,
+            "Axial ratio [no units]": 1.6262659653748237,
+            "Intrinsic vertical group velocity [m/s]": -0.009137743628583057,
+            "Intrinsic horizontal group velocity [m/s]": 0.6667986494805143,
+            "Intrinsic vertical phase speed [m/s]": 0.014693477743183475,
+            "Intrinsic horizontal phase speed [m/s]": 1.0722112059129847,
+            "Degree of Polarization [no units]": 0.9675034277076903
+        }
+    },
+    "flightPath": {
+        "time": [
+            [
+                "2020-12-14 03:09:44"
+            ],
+            [
+                "2020-12-14 03:12:03.400000"
+            ],
+            [
+                "2020-12-14 03:14:27.500000"
+            ],
+            [
+                "2020-12-14 03:16:50"
+            ],
+            [
+                "2020-12-14 03:19:25.750000"
+            ],
+            [
+                "2020-12-14 03:21:54.600000"
+            ],
+            [
+                "2020-12-14 03:23:56.600000"
+            ],
+            [
+                "2020-12-14 03:26:01"
+            ],
+            [
+                "2020-12-14 03:28:17.200000"
+            ],
+            [
+                "2020-12-14 03:30:51.200000"
+            ],
+            [
+                "2020-12-14 03:33:31"
+            ],
+            [
+                "2020-12-14 03:36:58"
+            ],
+            [
+                "2020-12-14 03:39:30.250000"
+            ],
+            [
+                "2020-12-14 03:42:22"
+            ],
+            [
+                "2020-12-14 03:45:02.495822"
+            ],
+            [
+                "2020-12-14 03:47:38.763231"
+            ],
+            [
+                "2020-12-14 03:50:09.107708"
+            ],
+            [
+                "2020-12-14 03:52:31.933794"
+            ],
+            [
+                "2020-12-14 03:54:54.759881"
+            ],
+            [
+                "2020-12-14 03:57:17.585968"
+            ],
+            [
+                "2020-12-14 03:59:40.412055"
+            ],
+            [
+                "2020-12-14 04:02:23.750000"
+            ],
+            [
+                "2020-12-14 04:05:11.250000"
+            ],
+            [
+                "2020-12-14 04:07:48.250000"
+            ],
+            [
+                "2020-12-14 04:10:16.400000"
+            ],
+            [
+                "2020-12-14 04:12:39.750000"
+            ],
+            [
+                "2020-12-14 04:15:10.750000"
+            ],
+            [
+                "2020-12-14 04:17:34.800000"
+            ],
+            [
+                "2020-12-14 04:20:03.500000"
+            ],
+            [
+                "2020-12-14 04:22:26.800000"
+            ],
+            [
+                "2020-12-14 04:24:42.600000"
+            ],
+            [
+                "2020-12-14 04:27:03.800000"
+            ],
+            [
+                "2020-12-14 04:29:15.400000"
+            ],
+            [
+                "2020-12-14 04:31:27.400000"
+            ],
+            [
+                "2020-12-14 04:33:38.200000"
+            ],
+            [
+                "2020-12-14 04:35:48.600000"
+            ],
+            [
+                "2020-12-14 04:38:03.750000"
+            ],
+            [
+                "2020-12-14 04:40:12.666667"
+            ],
+            [
+                "2020-12-14 04:42:18"
+            ],
+            [
+                "2020-12-14 04:44:17.666667"
+            ],
+            [
+                "2020-12-14 04:46:15.200000"
+            ],
+            [
+                "2020-12-14 04:48:19.200000"
+            ],
+            [
+                "2020-12-14 04:50:15"
+            ],
+            [
+                "2020-12-14 04:52:07.600000"
+            ],
+            [
+                "2020-12-14 04:54:01"
+            ],
+            [
+                "2020-12-14 04:55:54.166667"
+            ],
+            [
+                "2020-12-14 04:57:52.333333"
+            ],
+            [
+                "2020-12-14 04:59:41.857143"
+            ],
+            [
+                "2020-12-14 05:01:38.800000"
+            ],
+            [
+                "2020-12-14 05:03:36.400000"
+            ],
+            [
+                "2020-12-14 05:05:35.166667"
+            ]
+        ],
+        "alt": [
+            [
+                1778
+            ],
+            [
+                2438
+            ],
+            [
+                3098
+            ],
+            [
+                3758
+            ],
+            [
+                4418
+            ],
+            [
+                5078
+            ],
+            [
+                5738
+            ],
+            [
+                6398
+            ],
+            [
+                7058
+            ],
+            [
+                7718
+            ],
+            [
+                8378
+            ],
+            [
+                9038
+            ],
+            [
+                9698
+            ],
+            [
+                10358
+            ],
+            [
+                11018
+            ],
+            [
+                11678
+            ],
+            [
+                12338
+            ],
+            [
+                12998
+            ],
+            [
+                13658
+            ],
+            [
+                14318
+            ],
+            [
+                14978
+            ],
+            [
+                15638
+            ],
+            [
+                16298
+            ],
+            [
+                16958
+            ],
+            [
+                17618
+            ],
+            [
+                18278
+            ],
+            [
+                18938
+            ],
+            [
+                19598
+            ],
+            [
+                20258
+            ],
+            [
+                20918
+            ],
+            [
+                21578
+            ],
+            [
+                22238
+            ],
+            [
+                22898
+            ],
+            [
+                23558
+            ],
+            [
+                24218
+            ],
+            [
+                24878
+            ],
+            [
+                25538
+            ],
+            [
+                26198
+            ],
+            [
+                26858
+            ],
+            [
+                27518
+            ],
+            [
+                28178
+            ],
+            [
+                28838
+            ],
+            [
+                29498
+            ],
+            [
+                30158
+            ],
+            [
+                30818
+            ],
+            [
+                31478
+            ],
+            [
+                32138
+            ],
+            [
+                32798
+            ],
+            [
+                33458
+            ],
+            [
+                34118
+            ],
+            [
+                34778
+            ]
+        ]
+    }
+}

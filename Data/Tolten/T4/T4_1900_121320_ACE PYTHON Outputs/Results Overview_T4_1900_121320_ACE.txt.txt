@@ -1,0 +1,22 @@
+Results Overview Data: 
+
+
+Detected convective boundary layer
+Calculated PBL height using VPT Method:1142
+Calculated PBL height using RI Method: 1164.4412801634949 meters
+Calculated PBL height using PT Method: 1414 meters
+Calculated PBL height using SH Method: 2192 meters
+
+Lapse Rates
+      -Lapse Rate to PBL: -8.018
+
+Mean Rise Rate: 4.0831 m/s
+Mean Rise Rate in Target Alt Range: 4.1121 m/s
+Max Altitude Reached: 22.411 Km
+
+Tropopause Location: 11.738,16.555Km
+
+Last Known Location
+    -Longitude: -72.25485
+    -Latitude: -38.65932
+    -Altitude: 21391.000 Meters

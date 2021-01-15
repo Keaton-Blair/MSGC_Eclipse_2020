@@ -1,0 +1,57 @@
+Radiosonde Summary
+ Date: 14/12/2020
+ Time: 14:32 GMT
+ Reference No. : 021_001
+
+Location:
+ Octant    : 10 
+ Latitude  : S 39°18' 27.29''
+ Longitude : W 72°06' 18.22''
+
+Flight Information:
+ Station No.  :       
+ Station Name :       
+ Sonde Type   : DFM-09
+ Sonde No.    : 20027748
+
+Surface:
+Pres[mb]     Temp[°C]     DewP[°C]     R.H.[%]     Wd[deg]     Ws[kn]      Clouds
+ 984.5          9.9         9.6          98         045         1.2       9////
+
+Freezing Level:
+Pres[mb]     Height[m]     DEWP[°C]
+ 753.5        2462         -0.2
+
+Tropopauses
+Pres[mb]     Height[m]     Temp[°C]     Hu[%]      DEWP[°C]
+ 217.8       11392         -53.4         67        -56.4
+ 123.6       14988         -64.6         17        -76.2
+
+Maximum Wind Level
+Pres[mb]     Height[m]     Temp[°C]     Hu[%]      Wd[deg]      Ws[kn]
+ 247.9       10552         -50.4         74          267       126.5
+
+Standard Level
+Pres[mb]     Height[m]     Temp[°C]     Hu[%]      Dew[°C]     Wd[deg]      Ws[kn]
+ 985             276         9.9          98         9.6          45         1.2
+ 925             792         7.5          96         6.9         309        13.5
+ 850            1486         5.0          97         4.5         255        24.2
+ 700            3049        -4.1         100        -4.1         248        44.0
+ 500            5623       -20.0          84       -21.9         251        66.0
+ 400            7256       -25.6          77       -28.1         253       109.8
+ 300            9278       -39.9          69       -43.1         265       120.7
+ 250           10496       -50.0          75       -52.3         267       126.0
+ 200           11941       -52.1          66       -55.4         258        79.0
+ 150           13789       -58.3          30       -66.9         243        29.5
+ 100                       -58.5           6       -77.8                        
+
+Highest Level
+Pres[mb]     Height[m]     Temp[°C]     Hu[%]      Dew[°C]     Wd[deg]      Ws[kn]
+  79.6         17750        -58.0          42       -64.4         180        12.9
+
+Ascension Rates
+Surface - 200 hPa       :   5.7 m/s      20 km/h    340 m/min
+Surface - 400 hPa       :   5.4 m/s      19 km/h    323 m/min
+
+Termination Reason:
+Terminated by User (TU)

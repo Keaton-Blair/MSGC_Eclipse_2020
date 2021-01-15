@@ -1,0 +1,139 @@
+Current file: T1_1600_121320_ACE EDITIED(1).txt
+
+height sampling frequency 7
+Alt: 17.785000, L_z: 0.679378, L_h: 59.674203, Theta (compass): 50.449364, w/f: 2.154106, period (hours): 8.783267, Vert. group vel: -0.016855, Horiz. group vel: 1.480525, Vert. phase spd: 0.021486, Horiz. phase spd: 1.887244
+Alt: 22.268500, L_z: 1.951641, L_h: 327.742685, Theta (compass): 10.799920, w/f: 1.352065, period (hours): 13.993479, Vert. group vel: -0.017549, Horiz. group vel: 2.947010, Vert. phase spd: 0.038741, Horiz. phase spd: 6.505861
+Alt: 24.053500, L_z: 0.932871, L_h: 212.699855, Theta (compass): 158.609678, w/f: 1.352704, period (hours): 13.986865, Vert. group vel: -0.008402, Horiz. group vel: 1.915651, Vert. phase spd: 0.018527, Horiz. phase spd: 4.224198
+
+Current file: T2_1702_121320_MT2 (2).txt
+
+N/A
+
+
+Current file: T3_1900_12132020_Artemis EDITED.txt
+
+height sampling frequency 7
+Alt: 19.276000, L_z: 1.125107, L_h: 125.517618, Theta (compass): 100.654292, w/f: 1.633479, period (hours): 11.582693, Vert. group vel: -0.016870, Horiz. group vel: 1.882035, Vert. phase spd: 0.026982, Horiz. phase spd: 3.010181
+Alt: 22.205500, L_z: 0.812723, L_h: 22.380627, Theta (compass): 21.749316, w/f: 12.074680, period (hours): 1.566923, Vert. group vel: -0.143088, Horiz. group vel: 3.940335, Vert. phase spd: 0.144076, Horiz. phase spd: 3.967548
+Alt: 25.324000, L_z: 1.346944, L_h: 60.733454, Theta (compass): 159.859992, w/f: 3.473556, period (hours): 5.446893, Vert. group vel: -0.062998, Horiz. group vel: 2.840552, Vert. phase spd: 0.068691, Horiz. phase spd: 3.097253
+Alt: 26.577000, L_z: 0.718083, L_h: 73.211903, Theta (compass): 64.293468, w/f: 1.622851, period (hours): 11.658549, Vert. group vel: -0.010613, Horiz. group vel: 1.082020, Vert. phase spd: 0.017109, Horiz. phase spd: 1.744354
+
+
+Current file: T4_1900_121320_ACE.txt
+
+height sampling frequency 7
+Alt: 20.452500, L_z: 0.500839, L_h: 20.581028, Theta (compass): 43.061701, w/f: 4.420334, period (hours): 4.280239, Vert. group vel: -0.030840, Horiz. group vel: 1.267304, Vert. phase spd: 0.032503, Horiz. phase spd: 1.335662
+
+
+Current file: T5_2000_121320_Clara.txt
+
+height sampling frequency 7
+Alt: 16.938500, L_z: 0.302172, L_h: 5.340906, Theta (compass): 37.460856, w/f: 9.811778, period (hours): 1.928304, Vert. group vel: -0.043077, Horiz. group vel: 0.761381, Vert. phase spd: 0.043529, Horiz. phase spd: 0.769373
+Alt: 22.332000, L_z: 1.840906, L_h: 117.585335, Theta (compass): 142.402933, w/f: 2.771808, period (hours): 6.825901, Vert. group vel: -0.065164, Horiz. group vel: 4.162274, Vert. phase spd: 0.074915, Horiz. phase spd: 4.785096
+Alt: 22.440500, L_z: 0.268199, L_h: 2.885271, Theta (compass): 234.553115, w/f: 8.217210, period (hours): 2.302496, Vert. group vel: -0.031877, Horiz. group vel: 0.342930, Vert. phase spd: 0.032356, Horiz. phase spd: 0.348085
+
+
+Current file: T8_2300_121320_MT2.txt
+
+Alt: 13.704000, L_z: 0.720715, L_h: 182.985774, Theta (compass): 18.277011, w/f: 1.134332, period (hours): 16.679503, Vert. group vel: -0.002674, Horiz. group vel: 0.679035, Vert. phase spd: 0.012003, Horiz. phase spd: 3.047416
+Alt: 16.164500, L_z: 0.531278, L_h: 47.570009, Theta (compass): 56.070147, w/f: 3.054392, period (hours): 6.194388, Vert. group vel: -0.021271, Horiz. group vel: 1.904548, Vert. phase spd: 0.023824, Horiz. phase spd: 2.133204
+Alt: 18.264500, L_z: 0.736497, L_h: 116.965890, Theta (compass): 53.400998, w/f: 1.478476, period (hours): 12.797020, Vert. group vel: -0.008673, Horiz. group vel: 1.377413, Vert. phase spd: 0.015987, Horiz. phase spd: 2.538913
+Alt: 18.649500, L_z: 1.027391, L_h: 197.225213, Theta (compass): 201.748606, w/f: 1.630835, period (hours): 11.601472, Vert. group vel: -0.015350, Horiz. group vel: 2.946702, Vert. phase spd: 0.024599, Horiz. phase spd: 4.722227
+Alt: 19.587500, L_z: 0.391046, L_h: 13.496969, Theta (compass): 59.589336, w/f: 5.788673, period (hours): 3.268467, Vert. group vel: -0.032242, Horiz. group vel: 1.112837, Vert. phase spd: 0.033234, Horiz. phase spd: 1.147069
+Alt: 22.422500, L_z: 0.713673, L_h: 143.080104, Theta (compass): 115.806919, w/f: 1.422064, period (hours): 13.304665, Vert. group vel: -0.007532, Horiz. group vel: 1.510075, Vert. phase spd: 0.014900, Horiz. phase spd: 2.987258
+
+
+
+Current file: T10_0100_121420_ACE.txt
+
+height sampling frequency 7
+Alt: 20.889500, L_z: 3.049918, L_h: 548.101995, Theta (compass): 78.210244, w/f: 1.453587, period (hours): 13.016142, Vert. group vel: -0.034283, Horiz. group vel: 6.161073, Vert. phase spd: 0.065088, Horiz. phase spd: 11.697057
+Alt: 22.310500, L_z: 0.717922, L_h: 100.296466, Theta (compass): 311.703317, w/f: 1.723288, period (hours): 10.979066, Vert. group vel: -0.012048, Horiz. group vel: 1.683088, Vert. phase spd: 0.018164, Horiz. phase spd: 2.537568
+Alt: 26.111500, L_z: 0.648071, L_h: 46.561559, Theta (compass): 47.082469, w/f: 2.053521, period (hours): 9.213485, Vert. group vel: -0.014905, Horiz. group vel: 1.070895, Vert. phase spd: 0.019539, Horiz. phase spd: 1.403787
+
+Current file: T12_Profile.txt
+
+height sampling frequency 7
+Alt: 16.970000, L_z: 0.784167, L_h: 42.275429, Theta (compass): 11.070909, w/f: 3.653058, period (hours): 5.179247, Vert. group vel: -0.038906, Horiz. group vel: 2.097447, Vert. phase spd: 0.042057, Horiz. phase spd: 2.267352
+Alt: 23.602500, L_z: 0.479605, L_h: 16.679330, Theta (compass): 249.393777, w/f: 5.512734, period (hours): 3.432070, Vert. group vel: -0.037540, Horiz. group vel: 1.305536, Vert. phase spd: 0.038817, Horiz. phase spd: 1.349957
+
+Current file: T13_0400_121420_ACE.txt
+
+height sampling frequency 7
+Alt: 26.052000, L_z: 0.606861, L_h: 61.731431, Theta (compass): 158.183142, w/f: 1.714428, period (hours): 11.035803, Vert. group vel: -0.010078, Horiz. group vel: 1.025175, Vert. phase spd: 0.015275, Horiz. phase spd: 1.553817
+
+Current file: T14_0500_12142020_MT2.txt
+
+N/A
+
+Current file: T15_0602_1214_Artemis.txt
+
+height sampling frequency 7
+Alt: 19.581000, L_z: 1.632878, L_h: 296.777471, Theta (compass): 97.073812, w/f: 1.414373, period (hours): 13.377014, Vert. group vel: -0.016957, Horiz. group vel: 3.082033, Vert. phase spd: 0.033907, Horiz. phase spd: 6.162675
+Alt: 19.640500, L_z: 0.384941, L_h: 22.930047, Theta (compass): 256.089607, w/f: 3.025059, period (hours): 6.254454, Vert. group vel: -0.015228, Horiz. group vel: 0.907100, Vert. phase spd: 0.017096, Horiz. phase spd: 1.018387
+Alt: 21.317000, L_z: 0.405556, L_h: 25.883203, Theta (compass): 142.130963, w/f: 2.877451, period (hours): 6.575295, Vert. group vel: -0.015064, Horiz. group vel: 0.961389, Vert. phase spd: 0.017133, Horiz. phase spd: 1.093453
+
+Current file: T17_Profile.txt
+
+Alt: 17.785000, L_z: 1.501036, L_h: 380.904641, Theta (compass): 50.717590, w/f: 1.305830, period (hours): 14.488932, Vert. group vel: -0.011901, Horiz. group vel: 3.020035, Vert. phase spd: 0.028777, Horiz. phase spd: 7.302598
+Alt: 25.558500, L_z: 0.711593, L_h: 19.029505, Theta (compass): 328.573427, w/f: 4.097726, period (hours): 4.617217, Vert. group vel: -0.040261, Horiz. group vel: 1.076660, Vert. phase spd: 0.042810, Horiz. phase spd: 1.144840
+Alt: 27.525500, L_z: 0.861870, L_h: 232.397076, Theta (compass): 332.659499, w/f: 1.103878, period (hours): 17.139651, Vert. group vel: -0.002505, Horiz. group vel: 0.675506, Vert. phase spd: 0.013968, Horiz. phase spd: 3.766398
+
+Current file: T18_0900_1214_Artemis.txt
+
+height sampling frequency 7
+Alt: 16.157500, L_z: 0.594284, L_h: 93.367872, Theta (compass): 68.322700, w/f: 1.757815, period (hours): 10.763414, Vert. group vel: -0.010373, Horiz. group vel: 1.629772, Vert. phase spd: 0.015337, Horiz. phase spd: 2.409600
+Alt: 18.999500, L_z: 0.644241, L_h: 105.877234, Theta (compass): 318.330733, w/f: 1.429918, period (hours): 13.231591, Vert. group vel: -0.006910, Horiz. group vel: 1.135646, Vert. phase spd: 0.013525, Horiz. phase spd: 2.222737
+Alt: 23.763000, L_z: 0.484282, L_h: 5.625415, Theta (compass): 28.797647, w/f: 10.097844, period (hours): 1.873676, Vert. group vel: -0.071092, Horiz. group vel: 0.825805, Vert. phase spd: 0.071796, Horiz. phase spd: 0.833984
+Alt: 27.357500, L_z: 1.053574, L_h: 122.848920, Theta (compass): 320.798751, w/f: 1.821586, period (hours): 10.386604, Vert. group vel: -0.019685, Horiz. group vel: 2.295314, Vert. phase spd: 0.028177, Horiz. phase spd: 3.285453
+Alt: 27.567500, L_z: 4.261792, L_h: 76.173618, Theta (compass): 232.561212, w/f: 5.538324, period (hours): 3.416212, Vert. group vel: -0.335236, Horiz. group vel: 5.991872, Vert. phase spd: 0.346533, Horiz. phase spd: 6.193802
+Alt: 28.166000, L_z: 2.351530, L_h: 70.491011, Theta (compass): 348.421871, w/f: 4.012789, period (hours): 4.714948, Vert. group vel: -0.129935, Horiz. group vel: 3.895021, Vert. phase spd: 0.138539, Horiz. phase spd: 4.152927
+
+Current file: T19_1000_121420_ACE.txt
+
+height sampling frequency 7
+Alt: 15.997000, L_z: 0.231865, L_h: 5.251875, Theta (compass): 240.150738, w/f: 10.236890, period (hours): 1.848226, Vert. group vel: -0.034515, Horiz. group vel: 0.781794, Vert. phase spd: 0.034848, Horiz. phase spd: 0.789327
+Alt: 16.480000, L_z: 0.912882, L_h: 44.414850, Theta (compass): 190.540732, w/f: 3.572342, period (hours): 5.296271, Vert. group vel: -0.044127, Horiz. group vel: 2.146925, Vert. phase spd: 0.047879, Horiz. phase spd: 2.329461
+Alt: 17.264000, L_z: 0.521856, L_h: 63.589460, Theta (compass): 114.639066, w/f: 1.877833, period (hours): 10.075491, Vert. group vel: -0.010307, Horiz. group vel: 1.255972, Vert. phase spd: 0.014387, Horiz. phase spd: 1.753139
+Alt: 20.725500, L_z: 0.833114, L_h: 35.679332, Theta (compass): 225.865486, w/f: 4.744794, period (hours): 3.987547, Vert. group vel: -0.055458, Horiz. group vel: 2.375068, Vert. phase spd: 0.058036, Horiz. phase spd: 2.485469
+Alt: 25.828500, L_z: 1.628772, L_h: 45.920008, Theta (compass): 326.308725, w/f: 2.669817, period (hours): 7.086661, Vert. group vel: -0.054887, Horiz. group vel: 1.547420, Vert. phase spd: 0.063843, Horiz. phase spd: 1.799939
+Alt: 26.161000, L_z: 0.946574, L_h: 6.465622, Theta (compass): 318.812392, w/f: 5.551914, period (hours): 3.407850, Vert. group vel: -0.074653, Horiz. group vel: 0.509922, Vert. phase spd: 0.077156, Horiz. phase spd: 0.527020
+
+
+Current file: T21_1200_121420_Artemis.txt
+
+height sampling frequency 7
+Alt: 14.051000, L_z: 0.892461, L_h: 384.396011, Theta (compass): 47.478502, w/f: 1.185300, period (hours): 15.962277, Vert. group vel: -0.004476, Horiz. group vel: 1.928021, Vert. phase spd: 0.015531, Horiz. phase spd: 6.689313
+Alt: 20.193500, L_z: 0.830794, L_h: 116.863600, Theta (compass): 75.909091, w/f: 1.880022, period (hours): 10.063757, Vert. group vel: -0.016443, Horiz. group vel: 2.313024, Vert. phase spd: 0.022931, Horiz. phase spd: 3.225645
+Alt: 20.008000, L_z: 1.664438, L_h: 184.718833, Theta (compass): 70.269880, w/f: 2.083830, period (hours): 9.079480, Vert. group vel: -0.039195, Horiz. group vel: 4.349854, Vert. phase spd: 0.050922, Horiz. phase spd: 5.651291
+Alt: 22.419500, L_z: 0.732886, L_h: 103.606631, Theta (compass): 296.504036, w/f: 1.681343, period (hours): 11.252965, Vert. group vel: -0.011692, Horiz. group vel: 1.652812, Vert. phase spd: 0.018091, Horiz. phase spd: 2.557514
+Alt: 26.976500, L_z: 1.022365, L_h: 64.530714, Theta (compass): 280.678357, w/f: 2.742560, period (hours): 6.898695, Vert. group vel: -0.035693, Horiz. group vel: 2.252897, Vert. phase spd: 0.041166, Horiz. phase spd: 2.598346
+Alt: 27.592500, L_z: 0.320648, L_h: 2.280734, Theta (compass): 68.463523, w/f: 18.476659, period (hours): 1.023999, Vert. group vel: -0.086727, Horiz. group vel: 0.616877, Vert. phase spd: 0.086981, Horiz. phase spd: 0.618689
+Alt: 28.362500, L_z: 1.855591, L_h: 263.449333, Theta (compass): 194.752472, w/f: 1.691333, period (hours): 11.186497, Vert. group vel: -0.029970, Horiz. group vel: 4.254974, Vert. phase spd: 0.046077, Horiz. phase spd: 6.541848
+
+
+Current file: T22_1300_121420_ACE.txt
+
+height sampling frequency 7
+Alt: 17.445500, L_z: 1.553500, L_h: 127.033790, Theta (compass): 102.569176, w/f: 2.765027, period (hours): 6.842641, Vert. group vel: -0.054816, Horiz. group vel: 4.482432, Vert. phase spd: 0.063064, Horiz. phase spd: 5.156951
+Alt: 19.983000, L_z: 0.686776, L_h: 59.393463, Theta (compass): 229.633142, w/f: 2.111733, period (hours): 8.959510, Vert. group vel: -0.016518, Horiz. group vel: 1.428488, Vert. phase spd: 0.021293, Horiz. phase spd: 1.841416
+Alt: 20.459000, L_z: 1.352108, L_h: 112.362602, Theta (compass): 67.409995, w/f: 2.847905, period (hours): 6.643511, Vert. group vel: -0.049564, Horiz. group vel: 4.118837, Vert. phase spd: 0.056534, Horiz. phase spd: 4.698093
+Alt: 27.312000, L_z: 1.851651, L_h: 30.383668, Theta (compass): 195.500797, w/f: 8.521736, period (hours): 2.220215, Vert. group vel: -0.228475, Horiz. group vel: 3.749045, Vert. phase spd: 0.231666, Horiz. phase spd: 3.801391
+Alt: 28.040000, L_z: 0.924584, L_h: 26.392865, Theta (compass): 110.107738, w/f: 3.416752, period (hours): 5.537449, Vert. group vel: -0.042407, Horiz. group vel: 1.210549, Vert. phase spd: 0.046380, Horiz. phase spd: 1.323958
+
+
+Current file: T23_1400_121420_MT2.txt
+
+height sampling frequency 7
+Alt: 16.462500, L_z: 0.411627, L_h: 27.564575, Theta (compass): 228.489537, w/f: 2.898068, period (hours): 6.528517, Vert. group vel: -0.015429, Horiz. group vel: 1.033185, Vert. phase spd: 0.017514, Horiz. phase spd: 1.172828
+Alt: 19.038500, L_z: 3.019857, L_h: 545.673890, Theta (compass): 118.765751, w/f: 1.442977, period (hours): 13.111842, Vert. group vel: -0.033251, Horiz. group vel: 6.008261, Vert. phase spd: 0.063976, Horiz. phase spd: 11.560243
+Alt: 19.581000, L_z: 0.491126, L_h: 26.260307, Theta (compass): 37.564020, w/f: 3.382686, period (hours): 5.593216, Vert. group vel: -0.022259, Horiz. group vel: 1.190199, Vert. phase spd: 0.024391, Horiz. phase spd: 1.304175
+
+Current file: T24_1500_121420_Artemis.txt
+
+height sampling frequency 7
+Alt: 15.664500, L_z: 0.654613, L_h: 45.960180, Theta (compass): 53.961020, w/f: 4.967953, period (hours): 3.808427, Vert. group vel: -0.045811, Horiz. group vel: 3.216403, Vert. phase spd: 0.047746, Horiz. phase spd: 3.352228
+Alt: 16.627000, L_z: 1.577351, L_h: 106.923926, Theta (compass): 57.634885, w/f: 3.959637, period (hours): 4.778238, Vert. group vel: -0.085849, Horiz. group vel: 5.819453, Vert. phase spd: 0.091698, Horiz. phase spd: 6.215908
+Alt: 18.377000, L_z: 2.752877, L_h: 1006.489992, Theta (compass): 100.399265, w/f: 1.175067, period (hours): 16.101291, Vert. group vel: -0.013097, Horiz. group vel: 4.788475, Vert. phase spd: 0.047492, Horiz. phase spd: 17.363860
+Alt: 19.297500, L_z: 0.674084, L_h: 70.883142, Theta (compass): 212.233702, w/f: 2.612489, period (hours): 7.242171, Vert. group vel: -0.022067, Horiz. group vel: 2.320417, Vert. phase spd: 0.025855, Horiz. phase spd: 2.718765
+

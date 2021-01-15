@@ -1,0 +1,22 @@
+Results Overview Data: 
+
+
+Detected neutral residual layer
+Calculated PBL height using VPT Method:VPT Method Inconclusive-Estimated Value: 297
+Calculated PBL height using RI Method: 802.0 meters
+Calculated PBL height using PT Method: 1281 meters
+Calculated PBL height using SH Method: 1921 meters
+
+Lapse Rates
+      -Lapse Rate to PBL: -7.470
+
+Mean Rise Rate: 5.6822 m/s
+Mean Rise Rate in Target Alt Range: 5.6416 m/s
+Max Altitude Reached: 33.480 Km
+
+Tropopause Location: 12.120,15.966Km
+
+Last Known Location
+    -Longitude: -73.07064
+    -Latitude: -38.46151
+    -Altitude: 9551.000 Meters

@@ -201,6 +201,8 @@ def drawPowerSurface(userInput, fileName, wavelets, altitudes, plotter, peaksToP
     # Levels is set to 50 to make it nearly continuous, which takes a while,
     # but looks good and handles the non-uniform yScale, which plt.imshow() does not
     plt.contourf(altitudes, yScale, wavelets.get('power'), levels=50)
+    #x,y = np.meshgrid(altitudes, yScale)
+    #plt.plot_surface(x, y, wavelets.get('power'), linewidth=0, antialiased=False)
     # Create a colorbar for the z scale
     cb = plt.colorbar()
     # Plot the outlines of the local maxima, contour is an easy way to outline a mask
@@ -240,20 +242,42 @@ def drawPowerSurface(userInput, fileName, wavelets, altitudes, plotter, peaksToP
     # However, with several innovations, it could be helpful,
     # so it's here for the future.
 
-    #from matplotlib import cm
-    #X, Y = np.meshgrid(altitudes, np.log10(yScale))
-    #fig = plt.figure()
-    #ax = fig.gca(projection='3d')
-    #surf = ax.plot_surface(X, Y, wavelets.get('power'), cmap=cm.viridis)
-    #fig.colorbar(surf)
+    """
+    from matplotlib import cm
+    # Make a meshgrid
+    X, Y = np.meshgrid(altitudes, np.log10(yScale))
+    fig = plt.figure()
+    ax = fig.gca(projection='3d', proj_type = 'ortho')
+    surf = ax.plot_surface(X, Y, wavelets.get('power'), cmap=cm.viridis, linewidth=0, antialiased=False)
+    fig.colorbar(surf)
+    # Set top-down view, elevation and azimuth in degrees
+    ax.view_init(elev=90, azim=270)
+    # Turn off z-axis
+    ax.w_zaxis.line.set_lw(0.)
+    ax.set_zticks([])
+    # Set axis limits
+    plt.xlim(altitudes[0], altitudes[len(altitudes)-1])
+    plt.ylim(np.log10(yScale)[0], np.log10(yScale)[-1])
     #ax.set_zlabel('Power [m^2(s^-2)]')
-    #ax.set_ylabel('log10(vertical wavelength)')
-    #ax.set_xlabel('Altitude [km]')
-    #if userInput.get('saveData'):
-    #    plt.savefig(userInput.get('savePath') + "/" + fileName[0:-4] + "_power_surface_3D.png")
-    #if userInput.get('showPlots'):
-    #    plt.show()
-    #plt.close()
+    ax.set_ylabel('log10(vertical wavelength)')
+    ax.set_xlabel('Altitude [km]')
+    # Get the maximum value on the plot
+    plotMax = np.max(wavelets.get('power'))
+    # Plot the outlines of the local maxima, contour is an easy way to outline a mask
+    # The 'plotter' is a boolean mask, so levels is set to 0.5 to be between 0 and 1
+    ax.contour3D(X, Y, 2*plotMax*plotter, colors='red', levels=[plotMax])
+    # Make a scatter plot of the identified peaks, coloring them according to which ones were confirmed as waves
+    if len(peaksToPlot) > 0:
+        ax.scatter3D(altitudes[peaksToPlot.T[1]], np.log10(yScale)[peaksToPlot.T[0]], [plotMax] * len(peaksToPlot), c=colorsToPlot, marker='.')
+    # Plot the cone of influence in black
+    ax.plot3D(altitudes, np.log10(wavelets.get('coi')), [plotMax] * len(altitudes), color='black')
+
+    if userInput.get('saveData'):
+        plt.savefig(userInput.get('savePath') + "/" + fileName[0:-4] + "_power_surface_3D.png")
+    if userInput.get('showPlots'):
+        plt.show()
+    plt.close()
+    """
 
 
 def compareMethods(waveR, waveC, parametersR, parametersC, regionR, regionC):
@@ -542,18 +566,8 @@ def waveletTransform(data, spatialResolution, wavelet):
     # u and v (zonal & meridional) components of wind speed
     u = -data['Ws'] * np.sin(data['Wd'] * np.pi / 180)
     v = -data['Ws'] * np.cos(data['Wd'] * np.pi / 180)
+    t = data['T']
 
-    # Subtract rolling mean (assumed to be background wind)
-    # Up next, try a 2-3 order polynomial fit instead and see if there's a big difference
-    # Also, try "fifth-order Butterworth filter" from Zink & Vincent (2001) section 3.2
-    N = int(len(data['Alt']) / 4)
-    # Also, figure out what min_periods is really doing and make a reason for picking a good value
-    rMean = pd.Series(u).rolling(window=N, min_periods=int(N/2), center=True).mean()
-    u = u - rMean
-    rMean = pd.Series(v).rolling(window=N, min_periods=int(N/2), center=True).mean()
-    v = v - rMean
-    rMean = pd.Series(data['T']).rolling(window=N, min_periods=int(N / 2), center=True).mean()
-    t = data['T'] - rMean
 
     # In preparation for wavelet transformation, define variables
     # From Torrence & Compo (1998)
@@ -987,7 +1001,9 @@ def getParameters(data, wave, spatialResolution, waveAltIndex, wavelength):
 
     # Coriolis frequency, negative in the southern hemisphere (Murphy 2014 section 3.2 paragraph 1)
     # Equation given by wikipedia (https://en.wikipedia.org/wiki/Coriolis_frequency), but I should
-    # get a peer reviewed source to verify the equation
+    # get a peer reviewed source to verify the equation.
+    # We're taking the absolute value, yielding a positive number, which shouldn't matter because
+    # all the applications are coriolisF**2, but we decided as a team to do it this way.
     coriolisF = abs( 2 * 7.2921 * 10 ** (-5) * np.sin(data.iloc[waveAltIndex, data.columns.get_loc('Lat.')] * np.pi / 180) )
 
     # Intrinsic frequency, from Murphy (2014) table 1
@@ -1010,7 +1026,7 @@ def getParameters(data, wave, spatialResolution, waveAltIndex, wavelength):
     bvPeak = np.array(bvF2)[waveAltIndex]
 
     # Check that the axial ratio is positive, and that the intrinsic frequency is less than Brunt Vaisala
-    if not np.sqrt(bvPeak) > abs(intrinsicF) > abs(coriolisF):
+    if not np.sqrt(bvPeak) > intrinsicF > coriolisF:
         return {}
 
 
@@ -1057,6 +1073,16 @@ def getParameters(data, wave, spatialResolution, waveAltIndex, wavelength):
     longitudeOfDetection = data['Long.'][waveAltIndex]
     # Get flight time at index
     timeOfDetection = data['Time'][waveAltIndex]
+
+    # More tests to check that our basic assumptions are being satisfied, from Jie Gong at NASA
+    if 1 / intrinsicF < 1800:  # Make sure that the period >> 30 mins
+        return {}
+    if m > (data['Alt'][data.shape[0]-1] - data['Alt'][0]):  # Make sure that the vertical wavelength < (delta z)/2
+        return {}
+    # Make sure that the horizontal wavelength >> balloon drift distance
+    if lambda_h < np.sqrt((data['Lat.'][data.shape[0]-1] - data['Lat.'][0]) ** 2 + (data['Long.'][data.shape[0]-1] - data['Long.'][0]) ** 2):
+        return {}
+
 
     # Assemble wave properties into dictionary
     waveProp = {

@@ -21,7 +21,7 @@ for file in os.listdir( userInput.get('dataSource') ):
     # Get the launch time and pbl height from profile header
     launchDateTime, pblHeight = readFromData( file, userInput.get('dataSource'))
     # Set the height in between data points, currently 5 because it's the nominal data acquisition rate
-    spatialResolution = 5  # meters, must be pos integer
+    spatialResolution = 10  # meters, must be pos integer
     # Interpolate to create a uniform spatial grid of data, rather than temporal
     dataList = interpolateData( data, spatialResolution, pblHeight, launchDateTime )
 

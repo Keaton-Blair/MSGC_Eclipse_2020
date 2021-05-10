@@ -16,6 +16,7 @@ from skimage.measure import find_contours  # Find contour levels around local ma
 from scipy.ndimage.morphology import binary_fill_holes  # Then fill in those contour levels
 from scipy.signal import argrelextrema  # Find one-dimensional local min, for peak rectangle method
 import json  # Used to save wave parameters to json file
+from mpl_toolkits.basemap import Basemap  # For mapping with balloon flight
 
 
 ########## USER INTERFACE ##########
@@ -1075,12 +1076,40 @@ def getParameters(data, wave, spatialResolution, waveAltIndex, wavelength):
     timeOfDetection = data['Time'][waveAltIndex]
 
     # More tests to check that our basic assumptions are being satisfied, from Jie Gong at NASA
-    if 1 / intrinsicF < 1800:  # Make sure that the period >> 30 mins
+    if 1 / intrinsicF < 1800:  # Make sure that the period >> 30 mins -- CHECK UNITS AND EVERYTHING!
+        print("1st check")
+        print(intrinsicF)
         return {}
     if m > (data['Alt'][data.shape[0]-1] - data['Alt'][0]):  # Make sure that the vertical wavelength < (delta z)/2
+        print("2nd check")
         return {}
     # Make sure that the horizontal wavelength >> balloon drift distance
-    if lambda_h < np.sqrt((data['Lat.'][data.shape[0]-1] - data['Lat.'][0]) ** 2 + (data['Long.'][data.shape[0]-1] - data['Long.'][0]) ** 2):
+    # Unit conversion comes from https://stackoverflow.com/questions/1253499/simple-calculations-for-working-with-lat-lon-and-km-distance
+    # Should find a peer-edited source eventually...
+    # The methodology also isn't entirely accurate, but because of the >> we just need a rough estimate for now
+    if lambda_h / 1000 < np.sqrt(( (max(data['Lat.']) - min(data['Lat.'])) * 110.574) ** 2
+                + ( (max(data['Long.']) - min(data['Long.'])) * 111.320*np.cos(latitudeOfDetection*np.pi/180) ) ** 2):
+
+        # Commented code to check errors within method, appears to be working fine!
+        """
+        print("3rd check")
+        print(lambda_h / 1000)
+
+        # Balloon trajectory plot code, here just in case I need it in the next week...
+        m = Basemap(projection='lcc', resolution='h',
+                    width=8E5, height=8E5,
+                    lat_0=-40, lon_0=-70, )
+        m.shadedrelief()
+        m.drawcoastlines()
+        m.drawcountries()
+
+        # Map (long, lat) to (x, y) for plotting
+        m.plot(data['Long.'], data['Lat.'], latlon=True, c='red')
+        m.scatter(max(data['Long.']), max(data['Lat.']), latlon=True, c='red')
+        m.scatter(min(data['Long.']), min(data['Lat.']), latlon=True, c='red')
+        plt.show()
+        """
+
         return {}
 
 

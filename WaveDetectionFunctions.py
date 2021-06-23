@@ -1,5 +1,3 @@
-
-
 ########## IMPORT LIBRARIES AND FUNCTIONS ##########
 
 import numpy as np  # Numbers (like pi) and math

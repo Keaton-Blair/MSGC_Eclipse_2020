@@ -16,7 +16,7 @@ from skimage.measure import find_contours  # Find contour levels around local ma
 from scipy.ndimage.morphology import binary_fill_holes  # Then fill in those contour levels
 from scipy.signal import argrelextrema  # Find one-dimensional local min, for peak rectangle method
 import json  # Used to save wave parameters to json file
-from mpl_toolkits.basemap import Basemap  # For mapping with balloon flight
+# from mpl_toolkits.basemap import Basemap  # For mapping with balloon flight
 
 
 ########## USER INTERFACE ##########
@@ -951,10 +951,29 @@ def getParameters(data, wave, spatialResolution, waveAltIndex, wavelength):
     # Calculate the wind variance of the wave
     windVariance = np.abs(wave.get('uTrim')) ** 2 + np.abs(wave.get('vTrim')) ** 2
 
+    # This code is for testing currently, see commented plotting below ... method to be approved during meeting on 25th!
+    i = np.array([x[0] for x in enumerate(windVariance)])[windVariance <= 0.5 * np.max(windVariance)]
+    i = np.append(i, argrelextrema(windVariance, np.less))
+    peakIndex = np.where(windVariance == np.max(windVariance))
+    i = i - peakIndex
+    i2 = i[i > 0]
+    i2 = int(np.min(i2) + peakIndex)
+    i1 = i[i < 0]
+    i1 = int(np.max(i1) + peakIndex)
+    uTrim = wave.get('uTrim').copy()[i1:i2]
+    vTrim = wave.get('vTrim').copy()[i1:i2]
+    tTrim = wave.get('tTrim').copy()[i1:i2]
+    """index = [x[0] for x in enumerate(windVariance)]
+    plt.plot(index, windVariance)
+    plt.plot(index, [0.5 * np.max(windVariance)] * len(index))
+    plt.plot([i1] * len(windVariance), windVariance, 'green')
+    plt.plot([i2] * len(windVariance), windVariance, 'green')
+    plt.show()"""
+
     # Get rid of values below max half-power, per Zink & Vincent (2001) section 2.3 paragraph 3
-    uTrim = wave.get('uTrim').copy()[windVariance >= 0.5 * np.max(windVariance)]
-    vTrim = wave.get('vTrim').copy()[windVariance >= 0.5 * np.max(windVariance)]
-    tTrim = wave.get('tTrim').copy()[windVariance >= 0.5 * np.max(windVariance)]
+    # uTrim = wave.get('uTrim').copy()[windVariance >= 0.5 * np.max(windVariance)]
+    # vTrim = wave.get('vTrim').copy()[windVariance >= 0.5 * np.max(windVariance)]
+    # tTrim = wave.get('tTrim').copy()[windVariance >= 0.5 * np.max(windVariance)]
 
     # Separate imaginary/real parts
     vHilbert = vTrim.copy().imag

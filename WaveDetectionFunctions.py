@@ -732,7 +732,6 @@ def saveParametersInLoop(waves, plottingInfo, parameters, region, peaks):
         colorIndex = np.array(peaks[0] == plottingInfo.get('peaks')).sum(axis=1)
         # Where equal, set the color to red instead of blue for the output plot
         plottingInfo['colors'][np.where(colorIndex == 2)] = '#2F2'
-        print(plottingInfo['colors'])
 
     # If found, save parameters to dictionary of waves
     if parameters:
@@ -962,6 +961,10 @@ def getParameters(data, wave, spatialResolution, waveAltIndex, wavelength):
     # Calculate the wind variance of the wave
     windVariance = np.abs(wave.get('uTrim')) ** 2 + np.abs(wave.get('vTrim')) ** 2
 
+    # Check to make sure that the maximum power doesn't occur on the edge
+    if np.max(windVariance) == windVariance[0] or np.max(windVariance) == windVariance[-1]:
+        return {}
+
     # This code is for testing currently, see commented plotting below ... method to be approved during meeting on 25th!
     i = np.array([x[0] for x in enumerate(windVariance)])[windVariance <= 0.5 * np.max(windVariance)]
     i = np.append(i, argrelextrema(windVariance, np.less))
@@ -974,12 +977,14 @@ def getParameters(data, wave, spatialResolution, waveAltIndex, wavelength):
     uTrim = wave.get('uTrim').copy()[i1:i2]
     vTrim = wave.get('vTrim').copy()[i1:i2]
     tTrim = wave.get('tTrim').copy()[i1:i2]
-    """index = [x[0] for x in enumerate(windVariance)]
+    """ Commented code to plot the new method, make sure we all agree on the method before I finalize this
+    index = [x[0] for x in enumerate(windVariance)]
     plt.plot(index, windVariance)
     plt.plot(index, [0.5 * np.max(windVariance)] * len(index))
     plt.plot([i1] * len(windVariance), windVariance, 'green')
     plt.plot([i2] * len(windVariance), windVariance, 'green')
     plt.show()"""
+
 
     # Get rid of values below max half-power, per Zink & Vincent (2001) section 2.3 paragraph 3
     # uTrim = wave.get('uTrim').copy()[windVariance >= 0.5 * np.max(windVariance)]

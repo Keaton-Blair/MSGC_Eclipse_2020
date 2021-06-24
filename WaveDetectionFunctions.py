@@ -967,10 +967,16 @@ def getParameters(data, wave, spatialResolution, waveAltIndex, wavelength):
     i = np.append(i, [0, len(windVariance)-1])
     peakIndex = np.where(windVariance == np.max(windVariance))
     i = i - peakIndex
-    i2 = i[i > 0]
-    i2 = int(np.min(i2) + peakIndex)
-    i1 = i[i < 0]
-    i1 = int(np.max(i1) + peakIndex)
+    if np.max(windVariance) == windVariance[-1]:
+        i2 = len(windVariance) - 1
+    else:
+        i2 = i[i > 0]
+        i2 = int(np.min(i2) + peakIndex)
+    if np.max(windVariance) == windVariance[0]:
+        i1 = 0
+    else:
+        i1 = i[i < 0]
+        i1 = int(np.max(i1) + peakIndex)
     uTrim = wave.get('uTrim').copy()[i1:i2]
     vTrim = wave.get('vTrim').copy()[i1:i2]
     tTrim = wave.get('tTrim').copy()[i1:i2]
@@ -986,6 +992,7 @@ def getParameters(data, wave, spatialResolution, waveAltIndex, wavelength):
     savename += str(random.randint(0, 1000000))
     savename += '.png'
     plt.savefig(savename)
+    plt.close()
 
 
     # Get rid of values below max half-power, per Zink & Vincent (2001) section 2.3 paragraph 3

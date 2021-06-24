@@ -106,7 +106,7 @@ def getAllUserInput():
     # Print results to inform user and begin program
     # Could eventually add a "verbose" option into user input that regulates print() commands
     print("Running with the following parameters:")
-    print("Path to input data: "+dataSource+"/")
+    print("Path to input data: "+dataSource)
     print("Display plots: "+str(showPlots))
     print("Save data: "+str(saveData))
     if saveData:
@@ -199,7 +199,11 @@ def drawPowerSurface(userInput, fileName, wavelets, altitudes, plotter, peaksToP
     # Contourf is a filled contour, which is the easiest tool to plot a colored surface
     # Levels is set to 50 to make it nearly continuous, which takes a while,
     # but looks good and handles the non-uniform yScale, which plt.imshow() does not
-    plt.contourf(altitudes, yScale, wavelets.get('power'), levels=50)
+    # plt.contourf(altitudes, yScale, wavelets.get('power'), levels=50)
+    # NOTE -- this is experimental code for dealing with plotting issues, not permanent!
+    temp = np.log(wavelets.get('power'))
+    # temp[temp < 0] = 0
+    plt.contourf(altitudes, yScale, temp, levels=50)
     #x,y = np.meshgrid(altitudes, yScale)
     #plt.plot_surface(x, y, wavelets.get('power'), linewidth=0, antialiased=False)
     # Create a colorbar for the z scale
@@ -721,6 +725,15 @@ def saveParametersInLoop(waves, plottingInfo, parameters, region, peaks):
     #   peaks: Shortened list of local maxima, with current peak(s) removed
 
 
+    # Temporary plotting changes for 6/25 meeting, delete later!!
+    if parameters and 'check' in parameters.keys():
+        parameters = {}
+        # Find similarities between the current peak and the list of peaks for plotting
+        colorIndex = np.array(peaks[0] == plottingInfo.get('peaks')).sum(axis=1)
+        # Where equal, set the color to red instead of blue for the output plot
+        plottingInfo['colors'][np.where(colorIndex == 2)] = '#2F2'
+        print(plottingInfo['colors'])
+
     # If found, save parameters to dictionary of waves
     if parameters:
 
@@ -819,7 +832,7 @@ def findPeaks(power):
     print("\nSearching for local maxima in power surface", end='')
 
     # Find and return coordinates of local maximums
-    cutOff = 500  # Disregard maximums less than this m^2/s^2, empirically determined via trial & error
+    cutOff = 300  # Disregard maximums less than this m^2/s^2, empirically determined via trial & error
     # Finds local maxima based on cutOff, margin
     peaks = peak_local_max(power, threshold_abs=cutOff)
 
@@ -1096,10 +1109,10 @@ def getParameters(data, wave, spatialResolution, waveAltIndex, wavelength):
     if 1 / intrinsicF < 1800:  # Make sure that the period >> 30 mins -- CHECK UNITS AND EVERYTHING!
         print("1st check")
         print(intrinsicF)
-        return {}
+        return {'check':1}
     if m > (data['Alt'][data.shape[0]-1] - data['Alt'][0]):  # Make sure that the vertical wavelength < (delta z)/2
         print("2nd check")
-        return {}
+        return {'check':2}
     # Make sure that the horizontal wavelength >> balloon drift distance
     # Unit conversion comes from https://stackoverflow.com/questions/1253499/simple-calculations-for-working-with-lat-lon-and-km-distance
     # Should find a peer-edited source eventually...
@@ -1127,7 +1140,7 @@ def getParameters(data, wave, spatialResolution, waveAltIndex, wavelength):
         plt.show()
         """
 
-        return {}
+        return {'check':3}
 
 
     # Assemble wave properties into dictionary

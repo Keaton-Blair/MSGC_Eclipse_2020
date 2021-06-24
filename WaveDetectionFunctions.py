@@ -961,13 +961,10 @@ def getParameters(data, wave, spatialResolution, waveAltIndex, wavelength):
     # Calculate the wind variance of the wave
     windVariance = np.abs(wave.get('uTrim')) ** 2 + np.abs(wave.get('vTrim')) ** 2
 
-    # Check to make sure that the maximum power doesn't occur on the edge
-    if np.max(windVariance) == windVariance[0] or np.max(windVariance) == windVariance[-1]:
-        return {}
-
     # This code is for testing currently, see commented plotting below ... method to be approved during meeting on 25th!
     i = np.array([x[0] for x in enumerate(windVariance)])[windVariance <= 0.5 * np.max(windVariance)]
     i = np.append(i, argrelextrema(windVariance, np.less))
+    i = np.append(i, [0, len(windVariance)-1])
     peakIndex = np.where(windVariance == np.max(windVariance))
     i = i - peakIndex
     i2 = i[i > 0]
@@ -978,12 +975,17 @@ def getParameters(data, wave, spatialResolution, waveAltIndex, wavelength):
     vTrim = wave.get('vTrim').copy()[i1:i2]
     tTrim = wave.get('tTrim').copy()[i1:i2]
     """ Commented code to plot the new method, make sure we all agree on the method before I finalize this
+    """
     index = [x[0] for x in enumerate(windVariance)]
     plt.plot(index, windVariance)
     plt.plot(index, [0.5 * np.max(windVariance)] * len(index))
     plt.plot([i1] * len(windVariance), windVariance, 'green')
     plt.plot([i2] * len(windVariance), windVariance, 'green')
-    plt.show()"""
+    import random
+    savename = 'C:\\Users\\Temp\\Documents\\MSGC_Eclipse_2020\\Data\\Outputs\\Max-half Power Filter\\saved_'
+    savename += str(random.randint(0, 1000000))
+    savename += '.png'
+    plt.savefig(savename)
 
 
     # Get rid of values below max half-power, per Zink & Vincent (2001) section 2.3 paragraph 3

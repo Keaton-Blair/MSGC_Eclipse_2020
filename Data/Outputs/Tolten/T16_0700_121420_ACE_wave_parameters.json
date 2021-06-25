@@ -1,34 +1,19 @@
 {
     "waves": {
         "wave1": {
-            "Altitude [km]": 13.824,
-            "Latitude [deg]": -39.004791,
-            "Longitude [deg]": -72.17344833333334,
-            "Date and Time [UTC]": "2020-12-14 07:47:33.333333",
+            "Altitude [km]": 13.834,
+            "Latitude [deg]": -39.004666,
+            "Longitude [deg]": -72.172821,
+            "Date and Time [UTC]": "2020-12-14 07:47:35",
             "Vertical wavelength [km]": 1.064772356596329,
-            "Horizontal wavelength [km]": 314.740395196548,
-            "Propagation direction [deg]": 46.93607544049025,
-            "Axial ratio [no units]": 1.2867957389062132,
-            "Intrinsic vertical group velocity [m/s]": -0.007928054203490239,
-            "Intrinsic horizontal group velocity [m/s]": 2.343485814303656,
-            "Intrinsic vertical phase speed [m/s]": 0.020016390734198326,
-            "Intrinsic horizontal phase speed [m/s]": 5.916726416741971,
-            "Degree of Polarization [no units]": 0.9977131046667945
-        },
-        "wave2": {
-            "Altitude [km]": 5.439,
-            "Latitude [deg]": -39.171686,
-            "Longitude [deg]": -72.890175,
-            "Date and Time [UTC]": "2020-12-14 07:19:43",
-            "Vertical wavelength [km]": 2.8221506871700126,
-            "Horizontal wavelength [km]": 58.80272112326072,
-            "Propagation direction [deg]": 133.541537774745,
-            "Axial ratio [no units]": 1.5670139122897475,
-            "Intrinsic vertical group velocity [m/s]": -0.03843314835942784,
-            "Intrinsic horizontal group velocity [m/s]": 0.800798382291411,
-            "Intrinsic vertical phase speed [m/s]": 0.06483801783802795,
-            "Intrinsic horizontal phase speed [m/s]": 1.350973886138518,
-            "Degree of Polarization [no units]": 0.6434778746583503
+            "Horizontal wavelength [km]": 308.75390008744046,
+            "Propagation direction [deg]": 50.13309733825228,
+            "Axial ratio [no units]": 1.2874989837093684,
+            "Intrinsic vertical group velocity [m/s]": -0.007945574698403393,
+            "Intrinsic horizontal group velocity [m/s]": 2.303992173886038,
+            "Intrinsic vertical phase speed [m/s]": 0.02002727591477486,
+            "Intrinsic horizontal phase speed [m/s]": 5.8073441787879325,
+            "Degree of Polarization [no units]": 0.9979893562158059
         }
     },
     "flightPath": {

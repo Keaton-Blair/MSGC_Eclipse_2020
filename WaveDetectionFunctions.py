@@ -198,6 +198,8 @@ def drawPowerSurface(userInput, fileName, wavelets, altitudes, plotter, peaksToP
 
     # Get the vertical wavelengths for the Y coordinates
     yScale = wavelets.get('wavelengths')
+    #yScaleShort = yScale[yScale <= max(wavelets.get('coi'))]  # EXPERIMENTAL!! -- DOESN'T WORK, need power surface to match scale...
+    #powerSurf = wavelets.get('power')[yScaleShort, :]
     # Contourf is a filled contour, which is the easiest tool to plot a colored surface
     # Levels is set to 50 to make it nearly continuous, which takes a while,
     # but looks good and handles the non-uniform yScale, which plt.imshow() does not
@@ -952,6 +954,7 @@ def getParameters(data, wave, spatialResolution, waveAltIndex, wavelength):
     windVariance = np.abs(wave.get('uTrim')) ** 2 + np.abs(wave.get('vTrim')) ** 2
 
     # Get rid of values below max half-power, per Zink & Vincent (2001) section 2.3 paragraph 3
+    # Add fix to get rid of smaller humps if they show up...
     uTrim = wave.get('uTrim').copy()[windVariance >= 0.5 * np.max(windVariance)]
     vTrim = wave.get('vTrim').copy()[windVariance >= 0.5 * np.max(windVariance)]
     tTrim = wave.get('tTrim').copy()[windVariance >= 0.5 * np.max(windVariance)]
@@ -1014,6 +1017,7 @@ def getParameters(data, wave, spatialResolution, waveAltIndex, wavelength):
     # According to wikipedia (https://en.wikipedia.org/wiki/Brunt%E2%80%93V%C3%A4is%C3%A4l%C3%A4_frequency),
     # the above equation is for water, and the atmospheric equation below is correct. However, this needs to be
     # verified with peer reviewed sources to confirm
+    # Fix to use eqn from https://glossary.ametsoc.org/wiki/Brunt-vaisala_frequency
     bvF2 = np.abs( 9.81 / pt * np.gradient(pt, spatialResolution) )  # Brunt-vaisala frequency squared
 
     # This code finds the mean across wave region: bvMean = np.mean(np.array(bvF2)[np.nonzero(region.sum(axis=0))])
@@ -1076,6 +1080,7 @@ def getParameters(data, wave, spatialResolution, waveAltIndex, wavelength):
     timeOfDetection = data['Time'][waveAltIndex]
 
     # More tests to check that our basic assumptions are being satisfied, from Jie Gong at NASA
+    # Look into this, find justification or refutation...
     if 1 / intrinsicF < 1800:  # Make sure that the period >> 30 mins -- CHECK UNITS AND EVERYTHING!
         print("1st check")
         print(intrinsicF)
@@ -1085,7 +1090,7 @@ def getParameters(data, wave, spatialResolution, waveAltIndex, wavelength):
         return {}
     # Make sure that the horizontal wavelength >> balloon drift distance
     # Unit conversion comes from https://stackoverflow.com/questions/1253499/simple-calculations-for-working-with-lat-lon-and-km-distance
-    # Should find a peer-edited source eventually...
+    # Should find a peer-edited source eventually... check with Carl
     # The methodology also isn't entirely accurate, but because of the >> we just need a rough estimate for now
     if lambda_h / 1000 < np.sqrt(( (max(data['Lat.']) - min(data['Lat.'])) * 110.574) ** 2
                 + ( (max(data['Long.']) - min(data['Long.'])) * 111.320*np.cos(latitudeOfDetection*np.pi/180) ) ** 2):

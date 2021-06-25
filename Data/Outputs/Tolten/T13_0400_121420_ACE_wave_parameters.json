@@ -1,6 +1,7 @@
 {
     "waves": {
         "wave1": {
+<<<<<<< HEAD
             "Altitude [km]": 15.65,
             "Latitude [deg]": -38.968763,
             "Longitude [deg]": -72.334051,
@@ -14,10 +15,26 @@
             "Intrinsic vertical phase speed [m/s]": 0.18598832438382956,
             "Intrinsic horizontal phase speed [m/s]": 22.34818104736704,
             "Degree of Polarization [no units]": 0.9063559772466325
+=======
+            "Altitude [km]": 15.645,
+            "Latitude [deg]": -38.968837,
+            "Longitude [deg]": -72.334319,
+            "Date and Time [UTC]": "2020-12-14 04:50:41",
+            "Vertical wavelength [km]": 4.259089426385316,
+            "Horizontal wavelength [km]": 517.8952485299553,
+            "Propagation direction [deg]": 217.73999019756343,
+            "Axial ratio [no units]": 2.9928338066443723,
+            "Intrinsic vertical group velocity [m/s]": -0.16529859480119075,
+            "Intrinsic horizontal group velocity [m/s]": 20.09992002184136,
+            "Intrinsic vertical phase speed [m/s]": 0.18607243782991048,
+            "Intrinsic horizontal phase speed [m/s]": 22.625970433375446,
+            "Degree of Polarization [no units]": 0.905391591546623
+>>>>>>> 989e4cfdc7ec892c1c54c7ff11f578b5fd915644
         },
         "wave2": {
             "Altitude [km]": 23.705,
             "Latitude [deg]": -38.91513283333334,
+<<<<<<< HEAD
             "Longitude [deg]": -72.26120933333334,
             "Date and Time [UTC]": "2020-12-14 05:16:03.833333",
             "Vertical wavelength [km]": 1.1119138562469995,
@@ -44,6 +61,19 @@
             "Intrinsic vertical phase speed [m/s]": 0.015123841741324586,
             "Intrinsic horizontal phase speed [m/s]": 4.695927226110523,
             "Degree of Polarization [no units]": 0.9928137853619996
+=======
+            "Longitude [deg]": -72.26120933333333,
+            "Date and Time [UTC]": "2020-12-14 05:16:03.833333",
+            "Vertical wavelength [km]": 1.1119138562469995,
+            "Horizontal wavelength [km]": 262.94001265959105,
+            "Propagation direction [deg]": 254.6159854988844,
+            "Axial ratio [no units]": 1.5563914094047766,
+            "Intrinsic vertical group velocity [m/s]": -0.01481627526651637,
+            "Intrinsic horizontal group velocity [m/s]": 3.5036811388385045,
+            "Intrinsic vertical phase speed [m/s]": 0.025233002032462995,
+            "Intrinsic horizontal phase speed [m/s]": 5.966978319929728,
+            "Degree of Polarization [no units]": 0.9780352058653522
+>>>>>>> 989e4cfdc7ec892c1c54c7ff11f578b5fd915644
         }
     },
     "flightPath": {

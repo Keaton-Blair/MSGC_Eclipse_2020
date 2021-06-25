@@ -1,5 +1,3 @@
-
-
 ########## IMPORT LIBRARIES AND FUNCTIONS ##########
 
 import numpy as np  # Numbers (like pi) and math
@@ -16,7 +14,7 @@ from skimage.measure import find_contours  # Find contour levels around local ma
 from scipy.ndimage.morphology import binary_fill_holes  # Then fill in those contour levels
 from scipy.signal import argrelextrema  # Find one-dimensional local min, for peak rectangle method
 import json  # Used to save wave parameters to json file
-from mpl_toolkits.basemap import Basemap  # For mapping with balloon flight
+# from mpl_toolkits.basemap import Basemap  # For mapping with balloon flight
 
 
 ########## USER INTERFACE ##########
@@ -108,7 +106,7 @@ def getAllUserInput():
     # Print results to inform user and begin program
     # Could eventually add a "verbose" option into user input that regulates print() commands
     print("Running with the following parameters:")
-    print("Path to input data: "+dataSource+"/")
+    print("Path to input data: "+dataSource)
     print("Display plots: "+str(showPlots))
     print("Save data: "+str(saveData))
     if saveData:
@@ -203,7 +201,11 @@ def drawPowerSurface(userInput, fileName, wavelets, altitudes, plotter, peaksToP
     # Contourf is a filled contour, which is the easiest tool to plot a colored surface
     # Levels is set to 50 to make it nearly continuous, which takes a while,
     # but looks good and handles the non-uniform yScale, which plt.imshow() does not
-    plt.contourf(altitudes, yScale, wavelets.get('power'), levels=50)
+    # plt.contourf(altitudes, yScale, wavelets.get('power'), levels=50)
+    # NOTE -- this is experimental code for dealing with plotting issues, not permanent!
+    temp = np.log(wavelets.get('power'))
+    # temp[temp < 0] = 0
+    plt.contourf(altitudes, yScale, temp, levels=50)
     #x,y = np.meshgrid(altitudes, yScale)
     #plt.plot_surface(x, y, wavelets.get('power'), linewidth=0, antialiased=False)
     # Create a colorbar for the z scale
@@ -725,6 +727,14 @@ def saveParametersInLoop(waves, plottingInfo, parameters, region, peaks):
     #   peaks: Shortened list of local maxima, with current peak(s) removed
 
 
+    # Temporary plotting changes for 6/25 meeting, delete later!!
+    if parameters and 'check' in parameters.keys():
+        parameters = {}
+        # Find similarities between the current peak and the list of peaks for plotting
+        colorIndex = np.array(peaks[0] == plottingInfo.get('peaks')).sum(axis=1)
+        # Where equal, set the color to red instead of blue for the output plot
+        plottingInfo['colors'][np.where(colorIndex == 2)] = '#2F2'
+
     # If found, save parameters to dictionary of waves
     if parameters:
 
@@ -823,7 +833,7 @@ def findPeaks(power):
     print("\nSearching for local maxima in power surface", end='')
 
     # Find and return coordinates of local maximums
-    cutOff = 500  # Disregard maximums less than this m^2/s^2, empirically determined via trial & error
+    cutOff = 300  # Disregard maximums less than this m^2/s^2, empirically determined via trial & error
     # Finds local maxima based on cutOff, margin
     peaks = peak_local_max(power, threshold_abs=cutOff)
 
@@ -953,11 +963,44 @@ def getParameters(data, wave, spatialResolution, waveAltIndex, wavelength):
     # Calculate the wind variance of the wave
     windVariance = np.abs(wave.get('uTrim')) ** 2 + np.abs(wave.get('vTrim')) ** 2
 
+    # This code is for testing currently, see commented plotting below ... method to be approved during meeting on 25th!
+    i = np.array([x[0] for x in enumerate(windVariance)])[windVariance <= 0.5 * np.max(windVariance)]
+    i = np.append(i, argrelextrema(windVariance, np.less))
+    i = np.append(i, [0, len(windVariance)-1])
+    peakIndex = np.where(windVariance == np.max(windVariance))
+    i = i - peakIndex
+    if np.max(windVariance) == windVariance[-1]:
+        i2 = len(windVariance) - 1
+    else:
+        i2 = i[i > 0]
+        i2 = int(np.min(i2) + peakIndex)
+    if np.max(windVariance) == windVariance[0]:
+        i1 = 0
+    else:
+        i1 = i[i < 0]
+        i1 = int(np.max(i1) + peakIndex)
+    uTrim = wave.get('uTrim').copy()[i1:i2]
+    vTrim = wave.get('vTrim').copy()[i1:i2]
+    tTrim = wave.get('tTrim').copy()[i1:i2]
+    """ Commented code to plot the new method, make sure we all agree on the method before I finalize this
+    """
+    index = [x[0] for x in enumerate(windVariance)]
+    plt.plot(index, windVariance)
+    plt.plot(index, [0.5 * np.max(windVariance)] * len(index))
+    plt.plot([i1] * len(windVariance), windVariance, 'green')
+    plt.plot([i2] * len(windVariance), windVariance, 'green')
+    import random
+    savename = 'C:\\Users\\Temp\\Documents\\MSGC_Eclipse_2020\\Data\\Outputs\\Max-half Power Filter\\saved_'
+    savename += str(random.randint(0, 1000000))
+    savename += '.png'
+    plt.savefig(savename)
+    plt.close()
+
+
     # Get rid of values below max half-power, per Zink & Vincent (2001) section 2.3 paragraph 3
-    # Add fix to get rid of smaller humps if they show up...
-    uTrim = wave.get('uTrim').copy()[windVariance >= 0.5 * np.max(windVariance)]
-    vTrim = wave.get('vTrim').copy()[windVariance >= 0.5 * np.max(windVariance)]
-    tTrim = wave.get('tTrim').copy()[windVariance >= 0.5 * np.max(windVariance)]
+    # uTrim = wave.get('uTrim').copy()[windVariance >= 0.5 * np.max(windVariance)]
+    # vTrim = wave.get('vTrim').copy()[windVariance >= 0.5 * np.max(windVariance)]
+    # tTrim = wave.get('tTrim').copy()[windVariance >= 0.5 * np.max(windVariance)]
 
     # Separate imaginary/real parts
     vHilbert = vTrim.copy().imag
@@ -1081,13 +1124,9 @@ def getParameters(data, wave, spatialResolution, waveAltIndex, wavelength):
 
     # More tests to check that our basic assumptions are being satisfied, from Jie Gong at NASA
     # Look into this, find justification or refutation...
-    if 1 / intrinsicF < 1800:  # Make sure that the period >> 30 mins -- CHECK UNITS AND EVERYTHING!
-        print("1st check")
-        print(intrinsicF)
-        return {}
     if m > (data['Alt'][data.shape[0]-1] - data['Alt'][0]):  # Make sure that the vertical wavelength < (delta z)/2
         print("2nd check")
-        return {}
+        return {'check':2}
     # Make sure that the horizontal wavelength >> balloon drift distance
     # Unit conversion comes from https://stackoverflow.com/questions/1253499/simple-calculations-for-working-with-lat-lon-and-km-distance
     # Should find a peer-edited source eventually... check with Carl
@@ -1115,7 +1154,7 @@ def getParameters(data, wave, spatialResolution, waveAltIndex, wavelength):
         plt.show()
         """
 
-        return {}
+        return {'check':3}
 
 
     # Assemble wave properties into dictionary

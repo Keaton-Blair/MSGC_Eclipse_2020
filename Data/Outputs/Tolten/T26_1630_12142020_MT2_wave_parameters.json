@@ -3,6 +3,7 @@
         "wave1": {
             "Altitude [km]": 19.403,
             "Latitude [deg]": -38.814852800000004,
+<<<<<<< HEAD
             "Longitude [deg]": -72.04787300000001,
             "Date and Time [UTC]": "2020-12-14 13:38:25.600000",
             "Vertical wavelength [km]": 2.129544713192658,
@@ -29,6 +30,34 @@
             "Intrinsic vertical phase speed [m/s]": 0.05511636628747789,
             "Intrinsic horizontal phase speed [m/s]": 25.732566723064664,
             "Degree of Polarization [no units]": 0.9280592623462165
+=======
+            "Longitude [deg]": -72.047873,
+            "Date and Time [UTC]": "2020-12-14 13:38:25.600000",
+            "Vertical wavelength [km]": 2.129544713192658,
+            "Horizontal wavelength [km]": 523.5145704540532,
+            "Propagation direction [deg]": 84.98454903393908,
+            "Axial ratio [no units]": 1.6164118099027045,
+            "Intrinsic vertical group velocity [m/s]": -0.030913456139265376,
+            "Intrinsic horizontal group velocity [m/s]": 7.59957967153217,
+            "Intrinsic vertical phase speed [m/s]": 0.050081178517517325,
+            "Intrinsic horizontal phase speed [m/s]": 12.311658213611267,
+            "Degree of Polarization [no units]": 0.9834285188369662
+        },
+        "wave2": {
+            "Altitude [km]": 16.263,
+            "Latitude [deg]": -38.8517535,
+            "Longitude [deg]": -72.116815,
+            "Date and Time [UTC]": "2020-12-14 13:28:05.500000",
+            "Vertical wavelength [km]": 3.3199695783705767,
+            "Horizontal wavelength [km]": 1128.76791627914,
+            "Propagation direction [deg]": 30.387987468355902,
+            "Axial ratio [no units]": 1.1405042219503845,
+            "Intrinsic vertical group velocity [m/s]": -0.01274752575634471,
+            "Intrinsic horizontal group velocity [m/s]": 4.33407528172771,
+            "Intrinsic vertical phase speed [m/s]": 0.05513333067900913,
+            "Intrinsic horizontal phase speed [m/s]": 18.744971397785346,
+            "Degree of Polarization [no units]": 0.9288421336338114
+>>>>>>> 989e4cfdc7ec892c1c54c7ff11f578b5fd915644
         }
     },
     "flightPath": {

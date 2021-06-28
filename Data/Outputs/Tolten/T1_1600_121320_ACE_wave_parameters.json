@@ -1,6 +1,36 @@
 {
     "waves": {
         "wave1": {
+<<<<<<< HEAD
+            "Altitude [km]": 18.651,
+            "Latitude [deg]": -38.66645925,
+            "Longitude [deg]": -72.37299025,
+            "Date and Time [UTC]": "2020-12-13 17:13:40.750000",
+            "Vertical wavelength [km]": 1.2939617953338711,
+            "Horizontal wavelength [km]": 188.39242915951849,
+            "Propagation direction [deg]": -51.11374486849318,
+            "Axial ratio [no units]": 1.8089299847049034,
+            "Intrinsic vertical group velocity [m/s]": -0.02357139901513007,
+            "Intrinsic horizontal group velocity [m/s]": 3.431842528243147,
+            "Intrinsic vertical phase speed [m/s]": 0.03394509489225759,
+            "Intrinsic horizontal phase speed [m/s]": 4.942185239057014,
+            "Degree of Polarization [no units]": 0.9827260447313997
+        },
+        "wave2": {
+            "Altitude [km]": 31.051,
+            "Latitude [deg]": -38.654625,
+            "Longitude [deg]": -72.695178,
+            "Date and Time [UTC]": "2020-12-13 17:54:36",
+            "Vertical wavelength [km]": 1.1611424883965062,
+            "Horizontal wavelength [km]": 634.945573109289,
+            "Propagation direction [deg]": 163.30259735417843,
+            "Axial ratio [no units]": 1.3791127980735445,
+            "Intrinsic vertical group velocity [m/s]": -0.011010090734661882,
+            "Intrinsic horizontal group velocity [m/s]": 6.020629200434483,
+            "Intrinsic vertical phase speed [m/s]": 0.023217047861219597,
+            "Intrinsic horizontal phase speed [m/s]": 12.695738815401894,
+            "Degree of Polarization [no units]": 0.9251825630553876
+=======
             "Altitude [km]": 18.656,
             "Latitude [deg]": -38.6664792,
             "Longitude [deg]": -72.3728892,
@@ -44,6 +74,7 @@
             "Intrinsic vertical phase speed [m/s]": 0.022784626681934657,
             "Intrinsic horizontal phase speed [m/s]": 3.569744934418437,
             "Degree of Polarization [no units]": 0.9377923424147261
+>>>>>>> 989e4cfdc7ec892c1c54c7ff11f578b5fd915644
         }
     },
     "flightPath": {

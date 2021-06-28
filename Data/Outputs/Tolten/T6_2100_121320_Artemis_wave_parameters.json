@@ -1,6 +1,21 @@
 {
     "waves": {
         "wave1": {
+<<<<<<< HEAD
+            "Altitude [km]": 23.459,
+            "Latitude [deg]": -38.74922872727272,
+            "Longitude [deg]": -72.34812081818183,
+            "Date and Time [UTC]": "2020-12-13 22:25:29.454545",
+            "Vertical wavelength [km]": 0.8857184165243105,
+            "Horizontal wavelength [km]": 534.4489464408367,
+            "Propagation direction [deg]": -63.75724332482881,
+            "Axial ratio [no units]": 1.1635452512532076,
+            "Intrinsic vertical group velocity [m/s]": -0.003913208741600001,
+            "Intrinsic horizontal group velocity [m/s]": 2.361258668819596,
+            "Intrinsic vertical phase speed [m/s]": 0.014972545780999894,
+            "Intrinsic horizontal phase speed [m/s]": 9.034543223786466,
+            "Degree of Polarization [no units]": 0.802269516332646
+=======
             "Altitude [km]": 23.454,
             "Latitude [deg]": -38.749258272727275,
             "Longitude [deg]": -72.34804718181819,
@@ -14,6 +29,7 @@
             "Intrinsic vertical phase speed [m/s]": 0.01616175520878805,
             "Intrinsic horizontal phase speed [m/s]": 6.208883563951933,
             "Degree of Polarization [no units]": 0.978987001195494
+>>>>>>> 989e4cfdc7ec892c1c54c7ff11f578b5fd915644
         }
     },
     "flightPath": {

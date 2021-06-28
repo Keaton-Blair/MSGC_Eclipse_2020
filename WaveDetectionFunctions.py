@@ -223,11 +223,11 @@ def drawPowerSurface(userInput, fileName, wavelets, altitudes, plotter, peaksToP
     plt.plot(altitudes, wavelets.get('coi'), color='black')
     # Set the axis scales, labels, and titles
     plt.yscale("log")
-    plt.xlabel("Altitude [km]")
-    plt.ylabel("Vertical Wavelength [m]")
+    plt.xlabel(r"Altitude [$km$]")
+    plt.ylabel(r"Vertical Wavelength [$m$]")
     plt.ylim(yScale[0], yScale[-1])
     plt.title("Power surface, including traced peaks")
-    cb.set_label(r"Power [$\frac{m^2}{s^2}$]")
+    cb.set_label(r"LN( Power ) [$\frac{m^2}{s^2}$]")
 
     # Save and/or show the plot, according to user input.
     if userInput.get('saveData'):

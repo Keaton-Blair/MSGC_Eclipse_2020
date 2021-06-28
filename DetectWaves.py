@@ -81,4 +81,4 @@ for file in os.listdir( userInput.get('dataSource') ):
     print("\nFinished file analysis")
 
 # Finished with every file in folder, now done running program
-print("\n\nAnalyzed all files in folder "+userInput.get('dataSource')+"/")
+print("\n\nAnalyzed all files in folder "+userInput.get('dataSource'))

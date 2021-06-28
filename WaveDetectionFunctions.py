@@ -207,7 +207,7 @@ def drawPowerSurface(userInput, fileName, wavelets, altitudes, plotter, peaksToP
     for i, _ in enumerate(altitudes):
         temp[yScale > wavelets.get('coi')[i], i] = np.NaN
 
-    temp[temp < 0] = 0
+    temp[temp < 0] = np.NaN
     plt.contourf(altitudes, yScale, temp, levels=50, cmap=plt.get_cmap('turbo'))
     #x,y = np.meshgrid(altitudes, yScale)
     #plt.plot_surface(x, y, wavelets.get('power'), linewidth=0, antialiased=False)
@@ -227,7 +227,7 @@ def drawPowerSurface(userInput, fileName, wavelets, altitudes, plotter, peaksToP
     plt.ylabel("Vertical Wavelength [m]")
     plt.ylim(yScale[0], yScale[-1])
     plt.title("Power surface, including traced peaks")
-    cb.set_label("Power [m^2/s^2]")
+    cb.set_label(r"Power [$\frac{m^2}{s^2}$]")
 
     # Save and/or show the plot, according to user input.
     if userInput.get('saveData'):
@@ -454,7 +454,7 @@ def readFromData(file, path):
 
     # Establish default values, in case not contained in profile
     launchDateTime = datetime.datetime.now()
-    pblHeight = 1500
+    pblHeight = 12000  # Was 1500, now using a typical tropopause value, will probably change to read from profile
 
     # Open and investigate the file
     f = open(os.path.join(path, file), 'r')

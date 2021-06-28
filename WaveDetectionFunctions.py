@@ -202,8 +202,11 @@ def drawPowerSurface(userInput, fileName, wavelets, altitudes, plotter, peaksToP
     # plt.contourf(altitudes, yScale, wavelets.get('power'), levels=50)
     # NOTE -- this is experimental code for dealing with plotting issues, not permanent!
     temp = np.log(wavelets.get('power'))
-    # temp[temp < 0] = 0
-    plt.contourf(altitudes, yScale, temp, levels=50)
+    for i, _ in enumerate(altitudes):
+        temp[yScale > wavelets.get('coi')[i], i] = np.NaN
+
+    temp[temp < 0] = 0
+    plt.contourf(altitudes, yScale, temp, levels=50, cmap=plt.get_cmap('turbo'))
     #x,y = np.meshgrid(altitudes, yScale)
     #plt.plot_surface(x, y, wavelets.get('power'), linewidth=0, antialiased=False)
     # Create a colorbar for the z scale

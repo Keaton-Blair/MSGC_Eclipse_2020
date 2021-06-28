@@ -986,17 +986,14 @@ def getParameters(data, wave, spatialResolution, waveAltIndex, wavelength):
     vTrim = wave.get('vTrim').copy()[i1:i2]
     tTrim = wave.get('tTrim').copy()[i1:i2]
     """ Commented code to plot the new method, make sure we all agree on the method before I finalize this
+        -- Almost done, just need to tweak the algorithm to avoid edge cases, how???
     """
     index = [x[0] for x in enumerate(windVariance)]
     plt.plot(index, windVariance)
     plt.plot(index, [0.5 * np.max(windVariance)] * len(index))
     plt.plot([i1] * len(windVariance), windVariance, 'green')
     plt.plot([i2] * len(windVariance), windVariance, 'green')
-    import random
-    savename = 'C:\\Users\\Temp\\Documents\\MSGC_Eclipse_2020\\Data\\Outputs\\Max-half Power Filter\\saved_'
-    savename += str(random.randint(0, 1000000))
-    savename += '.png'
-    plt.savefig(savename)
+    # plt.show()
     plt.close()
 
 

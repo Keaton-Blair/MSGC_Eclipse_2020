@@ -1008,8 +1008,8 @@ def getParameters(data, wave, spatialResolution, waveAltIndex, wavelength):
     uTrim = uTrim.real
     vTrim = vTrim.real
 
-    # Potential temperature, needs to be appropriately sourced and verified
-    pt = (1000.0 ** 0.286) * (data['T'] + 273.15) / (data['P'] ** 0.286)  # kelvin
+    # Potential temperature, from https://glossary.ametsoc.org/wiki/Potential_temperature
+    pt = (1000.0 ** (2/7)) * (data['T'] + 273.15) / (data['P'] ** (2/7))  # kelvin
 
     # Stokes parameters from Murphy (2014) appendix A and Eckerman (1996) equations 1-5
     I = np.mean(uTrim ** 2) + np.mean(vTrim ** 2)
@@ -1024,7 +1024,7 @@ def getParameters(data, wave, spatialResolution, waveAltIndex, wavelength):
     if np.abs(P) < 0.05 or np.abs(Q) < 0.05 or degPolar < 0.5 or degPolar > 1.0:
         return {}
 
-    # Find the angle of propagation, from Vincent & Fritts (1987) Equation 15
+    # Find the angle of propagation (unit circle, not compass), from Vincent & Fritts (1987) Equation 15
     theta = 0.5 * np.arctan2(P, D)  # arctan2 has a range of [-pi, pi], as opposed to arctan's range of [-pi/2, pi/2]
 
 
@@ -1038,8 +1038,8 @@ def getParameters(data, wave, spatialResolution, waveAltIndex, wavelength):
     # axialRatio = np.abs(1 / np.tan(0.5 * np.arcsin(Q / (degPolar * I))))
 
     # This equation is from Tom's code, but needs to be sourced because it gives different results than below
-    # gamma = np.mean(uvComp[0] * np.conj(tTrim)) /
-    #                           np.sqrt(np.mean(np.abs(uvComp[0]) ** 2) * np.mean(np.abs(tTrim) ** 2))
+    # gamma = np.mean(uvComp[0] * np.conj(tTrim)) / \
+    #         np.sqrt(np.mean(np.abs(uvComp[0]) ** 2) * np.mean(np.abs(tTrim) ** 2))
 
     # This comes from Marlton (2016) equation 2.5
     gamma = np.mean( uvComp[0] * np.gradient(tTrim, spatialResolution) )
@@ -1072,6 +1072,11 @@ def getParameters(data, wave, spatialResolution, waveAltIndex, wavelength):
     # the power surface. Finding the mean assumes that the data across the whole peak is all equally valid,
     # which I don't think is justified based on the appearance of many power surfaces.
     bvPeak = np.array(bvF2)[waveAltIndex]
+
+    plt.plot([x[0] for x in enumerate(bvF2)], bvF2)
+    plt.scatter([waveAltIndex], [bvPeak])
+    plt.show()
+    plt.close()
 
     # Check that the axial ratio is positive, and that the intrinsic frequency is less than Brunt Vaisala
     if not np.sqrt(bvPeak) > intrinsicF > coriolisF:
@@ -1165,7 +1170,7 @@ def getParameters(data, wave, spatialResolution, waveAltIndex, wavelength):
         'Date and Time [UTC]': timeOfDetection,
         'Vertical wavelength [km]': (2 * np.pi / m) / 1000,
         'Horizontal wavelength [km]': lambda_h / 1000,
-        'Propagation direction [deg]': theta * 180 / np.pi,
+        'Propagation direction [deg N from E]': theta * 180 / np.pi,
         'Axial ratio [no units]': axialRatio,
         'Intrinsic vertical group velocity [m/s]': intrinsicVerticalGroupVel,
         'Intrinsic horizontal group velocity [m/s]': intrinsicHorizGroupVel,

@@ -431,7 +431,7 @@ def cleanData(file, path):
     data.reset_index(drop=True, inplace=True)  # Return data frame index to [0,1,2,...,nrow]
 
     # Get rid of extraneous columns that won't be used for further analysis
-    essentialData = ['Time', 'Alt', 'T', 'P', 'Ws', 'Wd', 'Lat.', 'Long.']
+    essentialData = ['Time', 'Alt', 'T', 'P', 'Ws', 'Wd', 'Lat.', 'Long.', 'D', 'Virt.Temp', 'Dewp.']  # Density is temporary for BV plots...
     data = data[essentialData]
 
     return data  # return cleaned pandas data frame
@@ -966,35 +966,37 @@ def getParameters(data, wave, spatialResolution, waveAltIndex, wavelength):
     # Calculate the wind variance of the wave
     windVariance = np.abs(wave.get('uTrim')) ** 2 + np.abs(wave.get('vTrim')) ** 2
 
-    # This code is for testing currently, see commented plotting below ... method to be approved during meeting on 25th!
-    i = np.array([x[0] for x in enumerate(windVariance)])[windVariance <= 0.5 * np.max(windVariance)]
-    i = np.append(i, argrelextrema(windVariance, np.less))
-    i = np.append(i, [0, len(windVariance)-1])
-    peakIndex = np.where(windVariance == np.max(windVariance))
-    i = i - peakIndex
-    if np.max(windVariance) == windVariance[-1]:
-        i2 = len(windVariance) - 1
-    else:
-        i2 = i[i > 0]
-        i2 = int(np.min(i2) + peakIndex)
-    if np.max(windVariance) == windVariance[0]:
-        i1 = 0
-    else:
-        i1 = i[i < 0]
-        i1 = int(np.max(i1) + peakIndex)
-    uTrim = wave.get('uTrim').copy()[i1:i2]
-    vTrim = wave.get('vTrim').copy()[i1:i2]
-    tTrim = wave.get('tTrim').copy()[i1:i2]
-    """ Commented code to plot the new method, make sure we all agree on the method before I finalize this
-        -- Almost done, just need to tweak the algorithm to avoid edge cases, how???
-    """
-    index = [x[0] for x in enumerate(windVariance)]
-    plt.plot(index, windVariance)
-    plt.plot(index, [0.5 * np.max(windVariance)] * len(index))
-    plt.plot([i1] * len(windVariance), windVariance, 'green')
-    plt.plot([i2] * len(windVariance), windVariance, 'green')
-    # plt.show()
-    plt.close()
+    # Filter U, V, T according to max half power - from Murphy (2014) & Zink & Vincent (2001) section 2.3 paragraph 3
+    # This method is a more sophisticated algorithm to trim the wave to a single period according to max half power
+    index = np.array([x[0] for x in enumerate(windVariance)])[windVariance <= 0.5 * np.max(windVariance)]
+    index = np.append(index, argrelextrema(windVariance, np.less))
+    try:
+        peakIndex = np.where(windVariance == np.max(windVariance))
+        if np.array([peakIndex > index]).all() or np.array([peakIndex < index]).all():
+            maxes = np.array(argrelextrema(windVariance, np.greater)).flatten()
+            peakIndex = maxes[windVariance[maxes].argsort()[::-1]][1]
+        index = index - peakIndex
+        leftIndex = index[index < 0]
+        leftIndex = int(np.max(leftIndex) + peakIndex)
+        rightIndex = index[index > 0]
+        rightIndex = int(np.min(rightIndex) + peakIndex)
+
+        # Trim U, V, T to a single period with amplitude > half max power
+        uTrim = wave.get('uTrim').copy()[leftIndex:rightIndex]
+        vTrim = wave.get('vTrim').copy()[leftIndex:rightIndex]
+        tTrim = wave.get('tTrim').copy()[leftIndex:rightIndex]
+        """ Commented code to plot the new method
+        index = [x[0] for x in enumerate(windVariance)]
+        plt.plot(index, windVariance)
+        plt.plot(index, [0.5 * np.max(windVariance)] * len(index))
+        #plt.plot([i1] * len(windVariance), windVariance, 'green')
+        #plt.plot([i2] * len(windVariance), windVariance, 'green')
+        plt.show()
+        plt.close()
+        """
+    except (ValueError, IndexError):
+        # Wave doesn't have a full period above half-max power
+        return {}
 
 
     # Get rid of values below max half-power, per Zink & Vincent (2001) section 2.3 paragraph 3
@@ -1042,6 +1044,7 @@ def getParameters(data, wave, spatialResolution, waveAltIndex, wavelength):
     #         np.sqrt(np.mean(np.abs(uvComp[0]) ** 2) * np.mean(np.abs(tTrim) ** 2))
 
     # This comes from Marlton (2016) equation 2.5
+    # Plot this, check for ambiguity w/ leftover zeroes in U'
     gamma = np.mean( uvComp[0] * np.gradient(tTrim, spatialResolution) )
     if np.angle(gamma) < 0:
         theta = theta + np.pi
@@ -1056,12 +1059,16 @@ def getParameters(data, wave, spatialResolution, waveAltIndex, wavelength):
     # Intrinsic frequency, from Murphy (2014) table 1
     intrinsicF = coriolisF * axialRatio
 
-    # From Zink & Vincent (2001), N^2 = - g/p0 * np.gradient(p0/Alt), where p0 is density
     # According to wikipedia (https://en.wikipedia.org/wiki/Brunt%E2%80%93V%C3%A4is%C3%A4l%C3%A4_frequency),
     # the above equation is for water, and the atmospheric equation below is correct. However, this needs to be
     # verified with peer reviewed sources to confirm
-    # Fix to use eqn from https://glossary.ametsoc.org/wiki/Brunt-vaisala_frequency
-    bvF2 = np.abs( 9.81 / pt * np.gradient(pt, spatialResolution) )  # Brunt-vaisala frequency squared
+    # This equation assumes dry air, which is generally true > ~16 km
+    bvF2 = 9.81 / pt * np.gradient(pt, spatialResolution)  # Brunt-vaisala frequency squared
+    # Other equations that exist are:
+    # bvF2 = - 9.81 / data['D'] * np.gradient(data['D'], spatialResolution)
+    # bvF2 = 9.81 / np.mean(pt) * np.gradient(pt, spatialResolution)
+    # bvF2 = - 9.81 * data['T'] / (298.15) * np.gradient(np.log(pt), spatialResolution)
+    # bvF2 = 9.81 / data['Virt.Temp'] * (np.gradient(data['Virt.Temp'], spatialResolution) - 9.8/1000)
 
     # This code finds the mean across wave region: bvMean = np.mean(np.array(bvF2)[np.nonzero(region.sum(axis=0))])
     # However, my current code uses the Brunt-vaisala frequency squared at the wave altitude instead,
@@ -1071,7 +1078,7 @@ def getParameters(data, wave, spatialResolution, waveAltIndex, wavelength):
     # contact with the wave for a while after capturing the best data, leading to a skewed hump shape in
     # the power surface. Finding the mean assumes that the data across the whole peak is all equally valid,
     # which I don't think is justified based on the appearance of many power surfaces.
-    bvPeak = np.array(bvF2)[waveAltIndex]
+    bvPeak = np.mean(np.array(bvF2)[leftIndex:rightIndex])
 
     plt.plot([x[0] for x in enumerate(bvF2)], bvF2)
     plt.scatter([waveAltIndex], [bvPeak])

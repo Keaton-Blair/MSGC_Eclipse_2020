@@ -431,7 +431,7 @@ def cleanData(file, path):
     data.reset_index(drop=True, inplace=True)  # Return data frame index to [0,1,2,...,nrow]
 
     # Get rid of extraneous columns that won't be used for further analysis
-    essentialData = ['Time', 'Alt', 'T', 'P', 'Ws', 'Wd', 'Lat.', 'Long.', 'D', 'Virt.Temp', 'Dewp.']  # Density is temporary for BV plots...
+    essentialData = ['Time', 'Alt', 'T', 'P', 'Ws', 'Wd', 'Lat.', 'Long.']
     data = data[essentialData]
 
     return data  # return cleaned pandas data frame
@@ -1040,14 +1040,26 @@ def getParameters(data, wave, spatialResolution, waveAltIndex, wavelength):
     # axialRatio = np.abs(1 / np.tan(0.5 * np.arcsin(Q / (degPolar * I))))
 
     # This equation is from Tom's code, but needs to be sourced because it gives different results than below
-    # gamma = np.mean(uvComp[0] * np.conj(tTrim)) / \
-    #         np.sqrt(np.mean(np.abs(uvComp[0]) ** 2) * np.mean(np.abs(tTrim) ** 2))
+    gamma = np.mean(uvComp[0] * np.conj(tTrim)) / \
+            np.sqrt(np.mean(np.abs(uvComp[0]) ** 2) * np.mean(np.abs(tTrim) ** 2))
 
+    print()
+    print("Zink Arg: ",np.angle(gamma))
     # This comes from Marlton (2016) equation 2.5
-    # Plot this, check for ambiguity w/ leftover zeroes in U'
-    gamma = np.mean( uvComp[0] * np.gradient(tTrim, spatialResolution) )
+    gamma = np.mean( uvComp[0].real * np.gradient(tTrim.real, spatialResolution) )
+    print("Zink Mag: ",np.abs(gamma))
+    print(data['Alt'][waveAltIndex])
+    print(wavelength)
     if np.angle(gamma) < 0:
         theta = theta + np.pi
+
+    index = [x[0] for x in enumerate(tTrim)]
+    plt.plot(index, uvComp[0].real, label='U')
+    plt.plot(index, tTrim.real, label='T')
+    plt.legend()
+    plt.show()
+    plt.close()
+
 
     # Coriolis frequency, negative in the southern hemisphere (Murphy 2014 section 3.2 paragraph 1)
     # Equation given by wikipedia (https://en.wikipedia.org/wiki/Coriolis_frequency), but I should
@@ -1079,11 +1091,6 @@ def getParameters(data, wave, spatialResolution, waveAltIndex, wavelength):
     # the power surface. Finding the mean assumes that the data across the whole peak is all equally valid,
     # which I don't think is justified based on the appearance of many power surfaces.
     bvPeak = np.mean(np.array(bvF2)[leftIndex:rightIndex])
-
-    plt.plot([x[0] for x in enumerate(bvF2)], bvF2)
-    plt.scatter([waveAltIndex], [bvPeak])
-    plt.show()
-    plt.close()
 
     # Check that the axial ratio is positive, and that the intrinsic frequency is less than Brunt Vaisala
     if not np.sqrt(bvPeak) > intrinsicF > coriolisF:

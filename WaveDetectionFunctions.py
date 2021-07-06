@@ -1039,26 +1039,19 @@ def getParameters(data, wave, spatialResolution, waveAltIndex, wavelength):
     # Alternative method that yields similar results (from Neelakantan et. al, 2019, Equation 8) is:
     # axialRatio = np.abs(1 / np.tan(0.5 * np.arcsin(Q / (degPolar * I))))
 
-    # This equation is from Tom's code, but needs to be sourced because it gives different results than below
+    # Murphy (2014) --> Zink (2000)
+    # This is the coherence function, measuring the coherence of U|| and T
     gamma = np.mean(uvComp[0] * np.conj(tTrim)) / \
             np.sqrt(np.mean(np.abs(uvComp[0]) ** 2) * np.mean(np.abs(tTrim) ** 2))
 
-    print()
-    print("Zink Arg: ",np.angle(gamma))
     # This comes from Marlton (2016) equation 2.5
-    gamma = np.mean( uvComp[0].real * np.gradient(tTrim.real, spatialResolution) )
-    print("Zink Mag: ",np.abs(gamma))
-    print(data['Alt'][waveAltIndex])
-    print(wavelength)
+    #gamma = np.mean( uvComp[0].real * np.gradient(tTrim.real, spatialResolution) )
+
+    # The phase of the coherence gives the phase shift between U|| and T
+    # If the phase shift is negative, wave is propagating anti-parallel, so reverse the angle
     if np.angle(gamma) < 0:
         theta = theta + np.pi
 
-    index = [x[0] for x in enumerate(tTrim)]
-    plt.plot(index, uvComp[0].real, label='U')
-    plt.plot(index, tTrim.real, label='T')
-    plt.legend()
-    plt.show()
-    plt.close()
 
 
     # Coriolis frequency, negative in the southern hemisphere (Murphy 2014 section 3.2 paragraph 1)

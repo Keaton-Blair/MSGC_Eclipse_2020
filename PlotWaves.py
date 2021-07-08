@@ -64,7 +64,7 @@ def getAllUserInput():
 userInput = getAllUserInput()
 
 # Start a figure to plot on
-fig = plt.figure()
+fig = plt.figure(figsize=(12,9))
 
 # Either start a 3d axis, or a 2d axis
 if userInput.get('plot3D'):
@@ -116,12 +116,12 @@ for file in os.listdir( userInput.get('dataSource') ):
 
         Y.append(wave.get('Altitude [km]'))
 
-        angle = wave.get('Propagation direction [deg]')
+        angle = wave.get('Propagation direction [deg N from E]')
         mag = wave.get('Intrinsic horizontal group velocity [m/s]')
         # Set components of the wave
         U.append( mag * np.sin( angle * np.pi / 180 ) )
         V.append( mag * np.cos( angle * np.pi / 180 ) )
-        W.append(wave.get('Intrinsic vertical group velocity [m/s]'))
+        W.append(wave.get('Vertical wavelength [km]'))
 
     # Get the datetime objects from strings in the dictionary
     X = [datetime.datetime.strptime(date.split('.', 1)[0], '%Y-%m-%d %H:%M:%S') for date in X]
@@ -136,7 +136,7 @@ for file in os.listdir( userInput.get('dataSource') ):
 
     else:
         # Otherwise, plot in 2d
-        plt.quiver(X, Y, U, V, color='red')
+        plt.quiver(X, Y, U, V, color='red', width=0.003)
 
     # Now, fix the format of the X and Y lists
     X = flightPath.get('time')

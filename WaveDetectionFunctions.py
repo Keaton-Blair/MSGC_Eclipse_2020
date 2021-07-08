@@ -409,6 +409,14 @@ def cleanData(file, path):
     data = pd.read_csv(StringIO(contents), delim_whitespace=True)
     del contents  # Free up a little memory
 
+    # Get rid of extraneous columns that won't be used for further analysis
+    essentialData = ['Time', 'Alt', 'T', 'P', 'Ws', 'Wd', 'Lat.', 'Long.', 'Rs']
+    data = data[essentialData]
+
+    # Coerce columns to numeric values to ensure that strings are interpreted as NA
+    for col in data.columns:
+        data[col] = pd.to_numeric(data[col], errors='coerce')
+
     # Find the end of usable (ascent) data
     badRows = []  # Index, soon to contain any rows to be removed
     for row in range(data.shape[0]):  # Iterate through rows of data
@@ -429,10 +437,6 @@ def cleanData(file, path):
         print("Dropping "+str(len(badRows))+" rows containing unusable data")
         data = data.drop(data.index[badRows])  # Actually remove any necessary rows
     data.reset_index(drop=True, inplace=True)  # Return data frame index to [0,1,2,...,nrow]
-
-    # Get rid of extraneous columns that won't be used for further analysis
-    essentialData = ['Time', 'Alt', 'T', 'P', 'Ws', 'Wd', 'Lat.', 'Long.']
-    data = data[essentialData]
 
     return data  # return cleaned pandas data frame
 
@@ -503,17 +507,17 @@ def interpolateData(data, spatialResolution, pblHeight, launchDateTime):
 
 
     # First, filter data to remove sub-PBL data
-    data = data[ (data['Alt'] - data['Alt'][0]) >= pblHeight]
+    data = data[data['Alt'] >= pblHeight]
 
     # Now, interpolate to create spatial grid, not temporal
-
     # Create index of heights with 1 meter spatial resolution
-    heightIndex = pd.DataFrame({'Alt': np.arange(min(data['Alt']), max(data['Alt']))})
+    heightIndex = pd.DataFrame({'Alt': np.arange(min(data['Alt']), max(data['Alt']+1))})
     # Right merge data with index to keeping all heights
     data = pd.merge(data, heightIndex, how="right", on="Alt")
     # Sort data by height for interpolation
     data = data.sort_values(by=['Alt'])
-
+    # Reset data frame index to [0, 1, 2, ... nrow]
+    data.reset_index(drop=True, inplace=True)
     # Use pandas built in interpolate function to fill in NAs
     # Linear interpolation appears the most trustworthy, but more testing could be done
     missingDataLimit = 999  # If 1 km or more missing data in a row, leave the NAs in place
@@ -535,6 +539,9 @@ def interpolateData(data, spatialResolution, pblHeight, launchDateTime):
     if len(data) > 1:
         print("Found more than " + str(missingDataLimit) + " meters of consecutive missing data.")
         print("Split data into " + str(len(data)) + " separate sections for analysis.")
+    # If all data was removed, inform user
+    if len(data) == 0:
+        print("No salvageable data, quitting analysis")
 
     # For each section of split data, fix the index and time values
     for i in range(len(data)):

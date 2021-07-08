@@ -1,5 +1,5 @@
 Flight Information:
-Launch Date:            	      	                       	Monday, 14 December 2020	     	                        	          	Launch Time: 	       	            	12:33:55  	       	     	End of Ascent:	     	         	01:39:16
+Launch Date:            	      	                       	Monday, 14 December 2020	     	                        	          	Launch Time: 	       	            	16:33:55  	       	     	End of Ascent:	     	         	01:39:16
 Station name:           	      	                       	                        	     	                        	          	Serialnumber:	       	            	20028046
 Ground values:
 Pressure:               	      	                       	1016.8 hPa              	     	                        	          	Temperature: 	       	            	13.6 ?C   	       	     	Humidity:     	     	         	97 %
@@ -7,12 +7,12 @@ Wind Direction:         	      	                       	112 ?                   
 Position:
 Longitude:              	      	                       	-73.160 ?               	     	                        	          	Latitude:    	       	            	-39.236 ? 	       	     	Altitude:     	     	         	3 m
 Staff:
-Company:                	      	                       	
-Operator:               	      	                       	                        	     	                        	          	
+Company:
+Operator:
 Events:
 Highest Point:          	      	                       	9.1 hPa                 	     	                        	          	31919 m
-Tropopauses:            	      	                       	1.: 220.1 hPa           	     	                        	          	2.: 115.6 hPa	       	            	
-Max Winds:              	      	                       	1.: 236.2 hPa           	     	                        	          	             	       	            	
+Tropopauses:            	      	                       	1.: 220.1 hPa           	     	                        	          	2.: 115.6 hPa
+Max Winds:              	      	                       	1.: 236.2 hPa
 Remarks:
 
 Profile Data:

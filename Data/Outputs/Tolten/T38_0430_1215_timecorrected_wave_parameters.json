@@ -6,13 +6,13 @@
             "Longitude [deg]": -72.54514449999999,
             "Date and Time [UTC]": "2020-12-15 05:26:21.500000",
             "Vertical wavelength [km]": 3.3926674457553023,
-            "Horizontal wavelength [km]": 569.3984695190126,
+            "Horizontal wavelength [km]": 569.3984695190125,
             "Propagation direction [deg N from E]": 69.96189700302472,
-            "Axial ratio [no units]": 1.7491190991369696,
-            "Intrinsic vertical group velocity [m/s]": -0.05807136316861594,
+            "Axial ratio [no units]": 1.7491190991369698,
+            "Intrinsic vertical group velocity [m/s]": -0.058071363168615955,
             "Intrinsic horizontal group velocity [m/s]": 9.746238274093887,
-            "Intrinsic vertical phase speed [m/s]": 0.08626931705666153,
-            "Intrinsic horizontal phase speed [m/s]": 14.478759820674874,
+            "Intrinsic vertical phase speed [m/s]": 0.08626931705666155,
+            "Intrinsic horizontal phase speed [m/s]": 14.478759820674872,
             "Degree of Polarization [no units]": 0.9948934274559696
         },
         "wave2": {

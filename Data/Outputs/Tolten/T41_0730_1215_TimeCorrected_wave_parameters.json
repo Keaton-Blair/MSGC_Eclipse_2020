@@ -2,8 +2,8 @@
     "waves": {
         "wave1": {
             "Altitude [km]": 19.186,
-            "Latitude [deg]": -38.663481,
-            "Longitude [deg]": -72.46954050000001,
+            "Latitude [deg]": -38.663481000000004,
+            "Longitude [deg]": -72.4695405,
             "Date and Time [UTC]": "2020-12-15 08:39:15.250000",
             "Vertical wavelength [km]": 1.3958752586016019,
             "Horizontal wavelength [km]": 252.67673010418733,
@@ -18,7 +18,7 @@
         "wave2": {
             "Altitude [km]": 16.191,
             "Latitude [deg]": -38.720822,
-            "Longitude [deg]": -72.542359,
+            "Longitude [deg]": -72.54235899999999,
             "Date and Time [UTC]": "2020-12-15 08:28:16",
             "Vertical wavelength [km]": 0.8481668614388256,
             "Horizontal wavelength [km]": 218.75100753267228,
@@ -66,13 +66,13 @@
             "Longitude [deg]": -72.48553,
             "Date and Time [UTC]": "2020-12-15 08:36:47.800000",
             "Vertical wavelength [km]": 0.8574027930126059,
-            "Horizontal wavelength [km]": 166.50163057187189,
+            "Horizontal wavelength [km]": 166.50163057187197,
             "Propagation direction [deg N from E]": -45.81904711324433,
-            "Axial ratio [no units]": 1.5792962173534997,
-            "Intrinsic vertical group velocity [m/s]": -0.011767181816912236,
-            "Intrinsic horizontal group velocity [m/s]": 2.2851044756542604,
-            "Intrinsic vertical phase speed [m/s]": 0.019642544255679517,
-            "Intrinsic horizontal phase speed [m/s]": 3.81444482547039,
+            "Axial ratio [no units]": 1.5792962173534992,
+            "Intrinsic vertical group velocity [m/s]": -0.011767181816912227,
+            "Intrinsic horizontal group velocity [m/s]": 2.2851044756542596,
+            "Intrinsic vertical phase speed [m/s]": 0.019642544255679514,
+            "Intrinsic horizontal phase speed [m/s]": 3.8144448254703915,
             "Degree of Polarization [no units]": 0.9871599431928876
         }
     },

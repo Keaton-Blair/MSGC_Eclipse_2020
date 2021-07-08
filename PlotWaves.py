@@ -85,6 +85,12 @@ elif userInput.get('units') == "months":
 elif userInput.get('units') == "years":
     ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y'))
 
+# Draw in the eclipse...
+partial = plt.axvspan(datetime.datetime.strptime('2020-12-14T15:39:29','%Y-%m-%dT%H:%M:%S'), datetime.datetime.strptime('2020-12-14T18:28:57','%Y-%m-%dT%H:%M:%S'),
+                        alpha=0.5, color='gray', label='Partial Solar Eclipse')
+total = plt.axvspan(datetime.datetime.strptime('2020-12-14T17:00:54','%Y-%m-%dT%H:%M:%S'), datetime.datetime.strptime('2020-12-14T17:02:49','%Y-%m-%dT%H:%M:%S'),
+                    alpha=1.0, color='black', label='Total Solar Eclipse')
+
 # For every JSON file, do the following:
 for file in os.listdir( userInput.get('dataSource') ):
     if not file.endswith(".json"):
@@ -158,10 +164,11 @@ for file in os.listdir( userInput.get('dataSource') ):
         else:
             plt.plot( X[i], Y[i], color='blue')
 
+
 # Define custom legend entries corresponding to the colors/shapes in the plot
 blue_line = mlines.Line2D([], [], color='blue', label='Radiosonde flight')
 red_arrow = mlines.Line2D([], [], color='w', marker=r'$\rightarrow$', markeredgecolor='red', markerfacecolor='red', markersize=15, label='Gravity Wave')
-plt.legend(handles=[blue_line, red_arrow])
+plt.legend(handles=[blue_line, red_arrow, total, partial], loc='upper left')
 
 # Set the title, as well as axis labels
 plt.title(userInput.get('title'))

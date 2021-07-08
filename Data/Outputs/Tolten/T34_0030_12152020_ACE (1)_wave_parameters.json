@@ -17,16 +17,16 @@
         },
         "wave2": {
             "Altitude [km]": 23.6353,
-            "Latitude [deg]": -38.58166410777162,
+            "Latitude [deg]": -38.581664107771616,
             "Longitude [deg]": -72.3372790905284,
             "Date and Time [UTC]": "2020-12-15 02:02:13.057692",
             "Vertical wavelength [km]": 2.7319290604539423,
-            "Horizontal wavelength [km]": 454.436665604262,
+            "Horizontal wavelength [km]": 454.43666560426203,
             "Propagation direction [deg N from E]": 28.865104194715656,
-            "Axial ratio [no units]": 1.7716802121346031,
+            "Axial ratio [no units]": 1.7716802121346034,
             "Intrinsic vertical group velocity [m/s]": -0.04774126643394824,
             "Intrinsic horizontal group velocity [m/s]": 7.941414820765211,
-            "Intrinsic vertical phase speed [m/s]": 0.07006225629109342,
+            "Intrinsic vertical phase speed [m/s]": 0.0700622562910934,
             "Intrinsic horizontal phase speed [m/s]": 11.654350251812657,
             "Degree of Polarization [no units]": 0.9638126236853757
         }

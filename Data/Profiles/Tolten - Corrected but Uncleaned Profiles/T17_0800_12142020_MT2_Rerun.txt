@@ -1,23 +1,23 @@
 Flight Information:
-Launch Date:            	      	                       	Monday, 14 December 2020	     	                        	          	Launch Time: 	     	            	04:01:17 	       	     	End of Ascent:	     	         	01:37:41
+Launch Date:            	      	                       	Monday, 14 December 2020	     	                        	          	Launch Time: 	     	            	08:01:17 	       	     	End of Ascent:	     	         	01:37:41
 Station name:           	      	                       	OKSTATE USRI            	     	                        	          	Serialnumber:	     	            	20027424
 Ground values:
-Pressure:               	      	                       	1018.8 hPa              	     	                        	          	Temperature: 	     	            	10.8 °C  	       	     	Humidity:     	     	         	97 %
-Wind Direction:         	      	                       	291 °                   	     	                        	          	Wind Speed:  	     	            	1 m/s    	       	     	Cloud group:  	     	         	9////
+Pressure:               	      	                       	1018.8 hPa              	     	                        	          	Temperature: 	     	            	10.8 ï¿½C  	       	     	Humidity:     	     	         	97 %
+Wind Direction:         	      	                       	291 ï¿½                   	     	                        	          	Wind Speed:  	     	            	1 m/s    	       	     	Cloud group:  	     	         	9////
 Position:
-Longitude:              	      	                       	-73.160 °               	     	                        	          	Latitude:    	     	            	-39.236 °	       	     	Altitude:     	     	         	3 m
+Longitude:              	      	                       	-73.160 ï¿½               	     	                        	          	Latitude:    	     	            	-39.236 ï¿½	       	     	Altitude:     	     	         	3 m
 Staff:
-Company:                	      	                       	
-Operator:               	      	                       	                        	     	                        	          	
+Company:
+Operator:
 Events:
 Highest Point:          	      	                       	8.5 hPa                 	     	                        	          	32272 m
-Tropopauses:            	      	                       	1.: 212.3 hPa           	     	                        	          	2.: 112.2 hPa	     	            	
-Max Winds:              	      	                       	1.: 208.7 hPa           	     	                        	          	2.: 12.3 hPa 	     	            	
+Tropopauses:            	      	                       	1.: 212.3 hPa           	     	                        	          	2.: 112.2 hPa
+Max Winds:              	      	                       	1.: 208.7 hPa           	     	                        	          	2.: 12.3 hPa
 Remarks:
 
 Profile Data:
 Time                    	P     	T                      	Hu                      	Ws   	Wd                      	Long.     	Lat.         	Alt  	Geopot      	MRI      	RI     	Dewp.	Virt. Temp    	Rs   	Elevation	Azimuth 	Range 	D
-[sec]                   	[hPa] 	[°C]                   	[%]                     	[m/s]	[°]                     	[°]       	[°]          	[m]  	[m]         	         	       	[°C] 	[°C]          	[m/s]	[°]      	[°]     	[m]   	[kg/m3]
+[sec]                   	[hPa] 	[ï¿½C]                   	[%]                     	[m/s]	[ï¿½]                     	[ï¿½]       	[ï¿½]          	[m]  	[m]         	         	       	[ï¿½C] 	[ï¿½C]          	[m/s]	[ï¿½]      	[ï¿½]     	[m]   	[kg/m3]
 0                       	1018.8	10.8                   	97                      	1.3  	291                     	-73.160440	-39.236340   	3    	3           	283.384  	282.913	10.3 	12.1          	0.0  	39.2     	180     	0     	1.250159
 1                       	1018.2	10.8                   	97                      	1.4  	297                     	-73.160443	-39.236378   	8    	8           	284.004  	282.795	10.4 	12.1          	4.7  	47.4     	183     	7     	1.249545
 2                       	1017.6	10.8                   	98                      	1.5  	302                     	-73.160446	-39.236416   	13   	13          	284.639  	282.677	10.4 	12.1          	4.7  	48.0     	184     	13    	1.248932

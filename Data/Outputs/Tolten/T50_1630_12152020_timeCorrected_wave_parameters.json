@@ -2,13 +2,13 @@
     "waves": {
         "wave1": {
             "Altitude [km]": 20.597,
-            "Latitude [deg]": -38.764317399999996,
+            "Latitude [deg]": -38.7643174,
             "Longitude [deg]": -72.868638,
             "Date and Time [UTC]": "2020-12-15 17:37:05.400000",
             "Vertical wavelength [km]": 1.2800232559470348,
             "Horizontal wavelength [km]": 277.653804964604,
             "Propagation direction [deg N from E]": 62.66584314293014,
-            "Axial ratio [no units]": 1.5407129355280054,
+            "Axial ratio [no units]": 1.5407129355280051,
             "Intrinsic vertical group velocity [m/s]": -0.016587374646895914,
             "Intrinsic horizontal group velocity [m/s]": 3.5980187576174973,
             "Intrinsic vertical phase speed [m/s]": 0.028661489307688266,
@@ -18,7 +18,7 @@
         "wave2": {
             "Altitude [km]": 15.172,
             "Latitude [deg]": -38.83791063636364,
-            "Longitude [deg]": -72.93347845454547,
+            "Longitude [deg]": -72.93347845454545,
             "Date and Time [UTC]": "2020-12-15 17:19:25.090909",
             "Vertical wavelength [km]": 1.2125506582949988,
             "Horizontal wavelength [km]": 244.70686403611919,
@@ -32,7 +32,7 @@
         },
         "wave3": {
             "Altitude [km]": 24.812,
-            "Latitude [deg]": -38.75130983333334,
+            "Latitude [deg]": -38.75130983333333,
             "Longitude [deg]": -72.94051133333333,
             "Date and Time [UTC]": "2020-12-15 17:49:49.666667",
             "Vertical wavelength [km]": 2.3475730021988777,
@@ -77,7 +77,7 @@
         },
         "wave6": {
             "Altitude [km]": 26.352,
-            "Latitude [deg]": -38.74962345454546,
+            "Latitude [deg]": -38.74962345454545,
             "Longitude [deg]": -72.98498918181818,
             "Date and Time [UTC]": "2020-12-15 17:54:12.909091",
             "Vertical wavelength [km]": 0.626297498546151,

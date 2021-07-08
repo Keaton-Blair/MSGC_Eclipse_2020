@@ -3,7 +3,7 @@
         "wave1": {
             "Altitude [km]": 29.054,
             "Latitude [deg]": -38.643767833333335,
-            "Longitude [deg]": -72.63251066666666,
+            "Longitude [deg]": -72.63251066666668,
             "Date and Time [UTC]": "2020-12-14 03:05:57.166667",
             "Vertical wavelength [km]": 1.50581550753849,
             "Horizontal wavelength [km]": 199.67551992404503,
@@ -48,7 +48,7 @@
         "wave4": {
             "Altitude [km]": 30.984,
             "Latitude [deg]": -38.63146166666667,
-            "Longitude [deg]": -72.713106,
+            "Longitude [deg]": -72.71310600000001,
             "Date and Time [UTC]": "2020-12-14 03:11:17.333333",
             "Vertical wavelength [km]": 0.8857184165243105,
             "Horizontal wavelength [km]": 95.53665388184075,

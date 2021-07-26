@@ -1,4 +1,4 @@
-## Gravity-Waves-2020
+## MSGC_Eclipse_2020
 
 
 *Developed by Keaton Blair and Hannah Woody, MSGC*
@@ -23,9 +23,7 @@ This file is highly experimental and currently does not work as intended.
 
 
 **TorrenceCompoWavelets.py:**
-See description contained in file. https://github.com/chris-torrence/wavelets/tree/master/wave_python  
-Reference: Torrence, C. and G. P. Compo, 1998: A Practical Guide to
-            Wavelet Analysis. <I>Bull. Amer. Meteor. Soc.</I>, 79, 61-78.
+See description contained in file. Torrence, C. and G. P. Compo, 1998: A Practical Guide to Wavelet Analysis. <I>Bull. Amer. Meteor. Soc.</I>, 79, 61-78. (https://github.com/chris-torrence/wavelets/tree/master/wave_python)
 
 
 **WaveDetectionFunctions.py:**

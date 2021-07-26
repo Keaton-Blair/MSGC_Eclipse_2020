@@ -1,5 +1,0 @@
-"TOA5","CR300Series_2","CR300","21904","CR300.Std.09.02","CPU:LufftWS5022Sec.cr300","30643","Public"
-"TIMESTAMP","RECORD","SaveSite","Latitude","Longitude","Altitude_m","BPoffset_KPa","SensorH_m","BatVolt_V","AirTemp_C","RH","Solar_W_m2","Barometer_hPa","WindSpeed_ms","WindDirect_deg","Wind_Quality"
-"TS","RN","","","","","","","","","","","","","",""
-"","","","","","","","","","","","","","","",""
-"2020-12-15 13:48:18.663",53828,0,1E-05,1E-05,1E-05,1E-05,0,11.00484,14.3,60,1058.3,1021.2,7.3,200.8,100

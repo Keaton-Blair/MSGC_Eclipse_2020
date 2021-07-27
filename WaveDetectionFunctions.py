@@ -111,7 +111,7 @@ def getAllUserInput():
     print("Display plots: "+str(showPlots))
     print("Save data: "+str(saveData))
     if saveData:
-        print("Path to output data: "+savePath+"/\n")
+        print("Path to output data: "+savePath+"\n")
     else:
         # Extra line for improved readability
         print()
@@ -135,6 +135,8 @@ def displayProgress(peaks, length, data, dataList):
     # INPUTS:
     #   peaks: Numpy 2d array containing list of peaks yet to be analyzed
     #   length: Original number of peaks to be analyzed
+    #   data: Pandas DataFrame containing the current section of the flight
+    #   dataList: Full list of flight sections, each section a Pandas DataFrame
     #
     # OUTPUTS: None
 
@@ -147,14 +149,14 @@ def displayProgress(peaks, length, data, dataList):
 
 
 def outputWaveParameters(userInput, waves, fileName):
-    # FUNCTION PURPOSE: Save or print final wave parameters from finished analysis
+    # FUNCTION PURPOSE: Save or print final wave parameters from finished analysis, based on user input
     #
     # INPUTS:
     #   userInput: Dictionary containing user input, especially data saving information
     #   waves: Dictionary containing final wave parameters from the completed analysis
     #   fileName: String with the name of the profile currently being analyzed
     #
-    # OUTPUTS: Either save a file according to the user input save path, or print it to the console
+    # OUTPUTS: None
 
     # If the user asked for data to be saved, do it
     if userInput.get('saveData'):
@@ -449,6 +451,10 @@ def cleanData(file, path):
     data.drop(columns='Rs')  # Remove rise rate from data as it is no longer needed
     data.reset_index(drop=True, inplace=True)  # Return data frame index to [0,1,2,...,nrow]
 
+    # If every row of data was removed, notify user
+    if data.empty:
+        print("No usable data left, quitting analysis")
+
     return data  # return cleaned pandas data frame
 
 
@@ -490,7 +496,7 @@ def readFromData(file, path):
                 print("Error reading flight time info, defaulting to present")
 
         # If line has expected beginning, try to get tropopause info
-        if line.split(' ')[0] == "Tropopauses":
+        if line.split(' ')[0] == "Tropopauses:":
             # noinspection PyBroadException
             try:
                 p = float(line.split(": ")[2].split(' ')[0])
@@ -503,6 +509,7 @@ def readFromData(file, path):
 
         # Close loop early if both values have been found
         if tropFlag and timeFlag:
+            print(f"Values from profile header: tropopause = {int(tropopause)/1000} km, launch = {launchDateTime} UTC")
             break
 
     f.close()  # Need to close opened file
@@ -533,10 +540,14 @@ def interpolateData(data, spatialResolution, tropopause, launchDateTime):
 
     # First, filter data to remove sub-PBL data
     data = data[data['Alt'] >= tropopause]
+    # If all data was removed, inform user
+    if len(data) == 0:
+        print("\nNo stratospheric data, quitting analysis")
+        return []
 
     # Now, interpolate to create spatial grid, not temporal
     # Create index of heights with 1 meter spatial resolution
-    heightIndex = pd.DataFrame({'Alt': np.arange(min(data['Alt']), max(data['Alt']+1))})
+    heightIndex = pd.DataFrame({'Alt': np.arange(min(data['Alt']), max(data['Alt'])+1)})
     # Right merge data with index to keep all heights, allowing interpolation to every whole meter
     data = pd.merge(data, heightIndex, how="right", on="Alt")
     # Sort data by height for interpolation
@@ -576,7 +587,7 @@ def interpolateData(data, spatialResolution, tropopause, launchDateTime):
         print("Split data into " + str(len(data)) + " separate sections for analysis", end='')
     # If all data was removed, inform user
     if len(data) == 0:
-        print("No salvageable data, quitting analysis")
+        print("\nNo salvageable data, quitting analysis")
 
     # For each section of split data, fix the index and time values
     for i in range(len(data)):
@@ -620,6 +631,19 @@ def waveletTransform(data, spatialResolution, waveletName):
     t = data['T']
 
     # FOR TESTING RIGHT NOW!!!! NOT PERMANENT!!!!
+    #from scipy.signal import butter, filtfilt
+    #b, a = butter(5, (1/1100), 'high')
+    #plt.plot(u, data['Alt'], 'b-')
+    #plt.plot(v, data['Alt'], 'r-')
+    #plt.plot(t, data['Alt'], 'g-')
+    #u = filtfilt(b, a, u)
+    #v = filtfilt(b, a, v)
+    #t = filtfilt(b, a, t)
+    #plt.plot(u, data['Alt'], 'b--')
+    #plt.plot(v, data['Alt'], 'r--')
+    #plt.plot(t, data['Alt'], 'g--')
+    #plt.show()
+    #plt.close()
     #size = int(len(u)/4)
     #u = u - np.convolve(u, np.ones(size), 'same') / size
     #v = v - np.convolve(v, np.ones(size), 'same') / size

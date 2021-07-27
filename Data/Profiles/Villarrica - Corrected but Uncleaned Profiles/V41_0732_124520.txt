@@ -1,5 +1,5 @@
 Flight Information:
-Launch Date:            	     	                       	Tuesday, 15 December 2020	     	                        	          	Launch Time: 	       	            	01:32:04  	          	        	End of Ascent:	     	         	01:38:49
+Launch Date:            	     	                       	Tuesday, 15 December 2020	     	                        	          	Launch Time: 	       	            	07:32:04  	          	        	End of Ascent:	     	         	01:38:49
 Station name:           	     	                       	                         	     	                        	          	Serialnumber:	       	            	20027540
 Ground values:
 Pressure:               	     	                       	987.1 hPa                	     	                        	          	Temperature: 	       	            	11.5 °C   	          	        	Humidity:     	     	         	80 %

@@ -1,5 +1,5 @@
 Flight Information:
-Launch Date:            	      	                       	Monday, 14 December 2020	     	                        	          	Launch Time: 	     	            	01:30:00  	          	        	End of Ascent:	     	         	01:52:22
+Launch Date:            	      	                       	Tuesday, 15 December 2020	     	                        	          	Launch Time: 	     	            	01:30:00  	          	        	End of Ascent:	     	         	01:52:22
 Station name:           	      	                       	OKSTATE USRI            	     	                        	          	Serialnumber:	     	            	20026378
 Ground values:
 Pressure:               	      	                       	1020.2 hPa              	     	                        	          	Temperature: 	     	            	10.6 °C   	          	        	Humidity:     	     	         	79 %

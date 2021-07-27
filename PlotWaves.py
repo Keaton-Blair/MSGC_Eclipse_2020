@@ -8,8 +8,8 @@ making a 3D plot where it's appropriate to use units of hours that I haven't yet
 well for making a 3D plot of the entire summer, or when making 2D plots, but I haven't yet created good plots
 using sequential flights in 3D. Much more work is needed to make a polished product, but this should provide a
 good start for plots of this nature. Currently, the program plots the waves in their propagation direction,
-scaled by their intrinsic group velocity. However, this could change, and could conceivably be picked from a
-list of options by the user during the user input section.
+scaled by their axial ratio (relative frequency). However, this could change, and could conceivably be picked
+from a list of options by the user during the user input section.
 
 """
 
@@ -85,7 +85,8 @@ elif userInput.get('units') == "months":
 elif userInput.get('units') == "years":
     ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y'))
 
-# Draw in the eclipse...
+# THESE LINES DRAW THE SOLAR ECLIPSE OF DECEMBER 14, 2020 ONTO THE PLOT
+# If another eclipse is being analyzed, either delete these lines or update the timestamps
 partial = plt.axvspan(datetime.datetime.strptime('2020-12-14T15:39:29','%Y-%m-%dT%H:%M:%S'), datetime.datetime.strptime('2020-12-14T18:28:57','%Y-%m-%dT%H:%M:%S'),
                         alpha=0.5, color='gray', label='Partial Solar Eclipse')
 total = plt.axvspan(datetime.datetime.strptime('2020-12-14T17:00:54','%Y-%m-%dT%H:%M:%S'), datetime.datetime.strptime('2020-12-14T17:02:49','%Y-%m-%dT%H:%M:%S'),
@@ -123,11 +124,11 @@ for file in os.listdir( userInput.get('dataSource') ):
         Y.append(wave.get('Altitude [km]'))
 
         angle = wave.get('Propagation direction [deg N from E]')
-        mag = wave.get('Intrinsic horizontal group velocity [m/s]')
+        mag = wave.get('Axial ratio [no units]')
         # Set components of the wave
-        U.append( mag * np.sin( angle * np.pi / 180 ) )
-        V.append( mag * np.cos( angle * np.pi / 180 ) )
-        W.append(wave.get('Vertical wavelength [km]'))
+        U.append( mag * np.cos( angle * np.pi / 180 ) )
+        V.append( mag * np.sin( angle * np.pi / 180 ) )
+        W.append(wave.get('Vertical wavelength [km]'))  # This goes with horizontal wavelength for a 3D plot
 
     # Get the datetime objects from strings in the dictionary
     X = [datetime.datetime.strptime(date.split('.', 1)[0], '%Y-%m-%d %H:%M:%S') for date in X]
@@ -144,7 +145,7 @@ for file in os.listdir( userInput.get('dataSource') ):
         # Otherwise, plot in 2d
         plt.quiver(X, Y, U, V, color='red', width=0.003)
 
-    # Now, fix the format of the X and Y lists
+    # Redefine X and Y to draw in the flight paths, rather than the gravity waves
     X = flightPath.get('time')
     X = [datetime.datetime.strptime(date.split('.', 1)[0], '%Y-%m-%dT%H:%M:%S') for date in X]
 

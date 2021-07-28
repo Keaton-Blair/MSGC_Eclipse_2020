@@ -1038,13 +1038,28 @@ def getParameters(data, wave, spatialResolution, waveAltIndex, wavelength):
         peakIndex = np.where(windVariance == np.max(windVariance))
         if np.array([peakIndex > index]).all() or np.array([peakIndex < index]).all():  # If the peak is on the edge,
             maxes = np.array(argrelextrema(windVariance, np.greater)).flatten()
-            peakIndex = maxes[windVariance[maxes].argsort()[::-1]][1]  # Pick the second highest local maximum
+            peakIndex = maxes[windVariance[maxes].argsort()[::-1]][1]  # then pick the second highest local maximum
         index = index - peakIndex  # Subtract peak index so that left is negative, right is positive
         # Find indices based on the closest value to zero that's either positive or negative
         leftIndex = index[index < 0]
         leftIndex = int(np.max(leftIndex) + peakIndex)
         rightIndex = index[index > 0]
         rightIndex = int(np.min(rightIndex) + peakIndex)
+
+        # Quick temporary plotting, discard changes afterwards --!
+        u = wave.get('uTrim')
+        v = wave.get('vTrim')
+        var = abs(u)**2 + abs(v)**2
+        a = data['Alt']/1000
+        plt.plot(a, var, color='#235FA4', label=r"$\mid u'(z)\mid^2 + \mid v'(z)\mid^2$")
+        plt.plot(a, [0.5*np.max(var)] * len(a), color='#A691AE', linestyle='dashed', label='Half-Max-Power')
+        plt.axvline(a[leftIndex], color='#6FDE6E', linestyle='dashed', label='New Filter Algorithm')
+        plt.axvline(a[rightIndex], color='#6FDE6E', linestyle='dashed')
+        plt.xlabel('Altitude $z$ [$km$]')
+        plt.ylabel('Power [$m^2/s^2$]')
+        plt.legend()
+        plt.show()
+        plt.close()
 
         # Trim U, V, T to a single period with amplitude > half max power
         uTrim = wave.get('uTrim').copy()[leftIndex:rightIndex]
@@ -1094,6 +1109,12 @@ def getParameters(data, wave, spatialResolution, waveAltIndex, wavelength):
             np.sqrt(np.mean(np.abs(uvMatrix[0]) ** 2) * np.mean(np.abs(tTrim) ** 2))
     # This comes from Marlton (2016) equation 2.5, but the coherence function performs better w/ our complex data
     # gamma = np.mean( uvMatrix[0].real * np.gradient(tTrim.real, spatialResolution) )
+
+    # Check for the relative phase between U|| and T from Murphy (2014) Section 2 Paragraph 3
+    # For a gravity wave, |angle| ~ 90 degrees, so remove waves that don't match
+    if not 10 < np.abs(np.angle(gamma, deg=True)) < 170:
+        # Need to determine exact parameters, Murphy uses 5 -- 175, cites Moffet (2011) which uses 20 -- 160 (par. 14)
+        return {}
 
     # The phase of the coherence gives the phase shift between U|| and T
     # If the phase shift is negative, wave is propagating anti-parallel, so reverse the angle

@@ -526,7 +526,7 @@ def interpolateData(data, spatialResolution, tropopause, launchDateTime):
     # INPUTS:
     #   data: Pandas DataFrame containing flight information
     #   spatialResolution: Desired length (in meters) between rows of data, must be a positive integer
-    #   pblHeight: The height above ground in meters of the PBL
+    #   tropopause: Tropopause altitude (in meters) as detected by GRAWMET software
     #   launchDateTime: A datetime.datetime object containing the launch date and time in UTC
     #
     # OUTPUTS:
@@ -585,7 +585,7 @@ def interpolateData(data, spatialResolution, tropopause, launchDateTime):
     if len(data) > 1:
         print("\nFound more than " + str(missingDataLimit) + " meters of consecutive missing data")
         print("Split data into " + str(len(data)) + " separate sections for analysis", end='')
-    # If all data was removed, inform user
+    # If all data was removed, inform user that the analysis will end
     if len(data) == 0:
         print("\nNo salvageable data, quitting analysis")
 
@@ -614,8 +614,8 @@ def waveletTransform(data, spatialResolution, waveletName):
     # INPUTS:
     #   data: Pandas DataFrame containing flight information
     #   spatialResolution: Length (in meters) between rows of data
-    #   wavelet: String containing the name of the wavelet to use for the transformation. Based on
-    #               Zink & Vincent (2001) and Murphy et. al (2014), this should be 'MORLET'
+    #   waveletName: String containing the name of the wavelet to use for the transformation. Based on
+    #                Zink & Vincent (2001) and Murphy et. al (2014), this should be 'MORLET'
     #
     # OUTPUTS:
     #   results: Dictionary containing the power surface (|U|^2 + |V|^2), the wavelet transformed
@@ -650,7 +650,7 @@ def waveletTransform(data, spatialResolution, waveletName):
 
     # In preparation for wavelet transformation, define variables
     # From Torrence & Compo (1998)
-    padding = 1  # Pad the data with zeros to allow convolution to edge of data
+    padding = 1  # 'True', tells function to pad the data with zeros to allow convolution to edge of data
     scaleResolution = 0.125/8  # This controls the spacing in between scales
     smallestScale = 2 * spatialResolution  # This number is the smallest wavelet scale
 
@@ -909,9 +909,9 @@ def findPeaks(power, coi, waveSignif):
 
 def findPeakRectangle(power, peak):
     # FUNCTION PURPOSE: Trace a rectangle around a local maximum in the power surface,
-    #                   following the method of Zink & Vincent (2001), which iterates
+    #                   following the method from Zink & Vincent (2001), which iterates
     #                   in four directions until either 25% of peak power is reached,
-    #                   of the power surface begins increasing.
+    #                   or the power surface begins increasing.
     #
     # INPUTS:
     #   power: Numpy 2d array containing sum of squares of wavelet transformed wind speeds

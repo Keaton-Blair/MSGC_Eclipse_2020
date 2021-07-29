@@ -630,23 +630,16 @@ def waveletTransform(data, spatialResolution, waveletName):
     v = -data['Ws'] * np.cos(data['Wd'] * np.pi / 180)
     t = data['T']
 
-    # FOR TESTING RIGHT NOW!!!! NOT PERMANENT!!!!
-    #from scipy.signal import butter, filtfilt
-    #b, a = butter(5, (1/1100), 'high')
-    #plt.plot(u, data['Alt'], 'b-')
-    #plt.plot(v, data['Alt'], 'r-')
-    #plt.plot(t, data['Alt'], 'g-')
-    #u = filtfilt(b, a, u)
-    #v = filtfilt(b, a, v)
-    #t = filtfilt(b, a, t)
-    #plt.plot(u, data['Alt'], 'b--')
-    #plt.plot(v, data['Alt'], 'r--')
-    #plt.plot(t, data['Alt'], 'g--')
-    #plt.show()
-    #plt.close()
-    #size = int(len(u)/4)
-    #u = u - np.convolve(u, np.ones(size), 'same') / size
-    #v = v - np.convolve(v, np.ones(size), 'same') / size
+    # Remove background using a second order polynomial fit, from Moffat (2011)
+    # Find polynomial fits
+    uFit = np.polyfit(data['Alt'], u, 2)
+    vFit = np.polyfit(data['Alt'], v, 2)
+    tFit = np.polyfit(data['Alt'], t, 2)
+    # Apply fits to remove background
+    u = u - uFit[0] * data['Alt']**2 - uFit[1] * data['Alt'] - uFit[2] * np.ones(len(u))
+    v = v - vFit[0] * data['Alt']**2 - vFit[1] * data['Alt'] - vFit[2] * np.ones(len(v))
+    t = t - tFit[0] * data['Alt']**2 - tFit[1] * data['Alt'] - tFit[2] * np.ones(len(t))
+
 
     # In preparation for wavelet transformation, define variables
     # From Torrence & Compo (1998)
@@ -1045,22 +1038,6 @@ def getParameters(data, wave, spatialResolution, waveAltIndex, wavelength):
         leftIndex = int(np.max(leftIndex) + peakIndex)
         rightIndex = index[index > 0]
         rightIndex = int(np.min(rightIndex) + peakIndex)
-
-        # Quick temporary plotting, discard changes afterwards --!
-        u = wave.get('uTrim')
-        v = wave.get('vTrim')
-        var = abs(u)**2 + abs(v)**2
-        a = data['Alt']/1000
-        plt.plot(a, var, color='#235FA4', label=r"$\mid u'(z)\mid^2 + \mid v'(z)\mid^2$")
-        plt.plot(a, [0.5*np.max(var)] * len(a), color='#A691AE', linestyle='dashed', label='Half-Max-Power')
-        plt.axvline(a[leftIndex], color='#6FDE6E', linestyle='dashed', label='New Filter Algorithm')
-        plt.axvline(a[rightIndex], color='#6FDE6E', linestyle='dashed')
-        plt.xlabel('Altitude $z$ [$km$]')
-        plt.ylabel('Power [$m^2/s^2$]')
-        plt.legend()
-        plt.show()
-        plt.close()
-
         # Trim U, V, T to a single period with amplitude > half max power
         uTrim = wave.get('uTrim').copy()[leftIndex:rightIndex]
         vTrim = wave.get('vTrim').copy()[leftIndex:rightIndex]
@@ -1112,7 +1089,7 @@ def getParameters(data, wave, spatialResolution, waveAltIndex, wavelength):
 
     # Check for the relative phase between U|| and T from Murphy (2014) Section 2 Paragraph 3
     # For a gravity wave, |angle| ~ 90 degrees, so remove waves that don't match
-    if not 10 < np.abs(np.angle(gamma, deg=True)) < 170:
+    if not 20 < np.abs(np.angle(gamma, deg=True)) < 160:
         # Need to determine exact parameters, Murphy uses 5 -- 175, cites Moffet (2011) which uses 20 -- 160 (par. 14)
         return {}
 

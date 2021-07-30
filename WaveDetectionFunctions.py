@@ -387,7 +387,7 @@ def cleanData(file, path):
     # Open and investigate the file
     contents = ""
     isProfile = False  # Check to see if this is a GRAWMET profile
-    f = open(os.path.join(path, file), 'r', encoding='unicode_escape')
+    f = open(os.path.join(path, file), 'r', encoding='unicode_escape')  # Escape non-utf characters, i.e. \0xb0
     print("\nOpening file "+file+":")
     for line in f:  # Iterate through file, line by line
         if line.rstrip() == "Profile Data:":
@@ -477,7 +477,7 @@ def readFromData(file, path):
     tropopause = 12000
 
     # Open and investigate the file
-    f = open(os.path.join(path, file), 'r')
+    f = open(os.path.join(path, file), 'r', encoding='unicode_escape')  # Escape non unicode characters, i.e. '\0xb0'
     # Create flags to close loop once both values have been found
     timeFlag = False
     tropFlag = False

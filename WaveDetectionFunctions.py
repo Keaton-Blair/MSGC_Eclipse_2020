@@ -387,7 +387,7 @@ def cleanData(file, path):
     # Open and investigate the file
     contents = ""
     isProfile = False  # Check to see if this is a GRAWMET profile
-    f = open(os.path.join(path, file), 'r')
+    f = open(os.path.join(path, file), 'r', encoding='unicode_escape')
     print("\nOpening file "+file+":")
     for line in f:  # Iterate through file, line by line
         if line.rstrip() == "Profile Data:":

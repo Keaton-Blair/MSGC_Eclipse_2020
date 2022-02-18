@@ -422,7 +422,7 @@ def cleanData(file, path):
     del contents  # Free up a little memory
 
     # Get rid of extraneous columns that won't be used for further analysis
-    essentialData = ['Time', 'Alt', 'T', 'P', 'Ws', 'Wd', 'Lat.', 'Long.', 'Rs']
+    essentialData = ['Time', 'Alt', 'T', 'P', 'D', 'Ws', 'Wd', 'Lat.', 'Long.', 'Rs']
     data = data[essentialData]
 
     # Coerce columns to numeric values to ensure that strings are interpreted as NA
@@ -1005,7 +1005,7 @@ def findPeakContour(power, peak):
 
 ########## STOKES PARAMETERS ANALYSIS ##########
 
-def getParameters(data, wave, spatialResolution, waveAltIndex, wavelength):
+def getParameters(data, wave, spatialResolution, waveAltIndex, wavelength, amplitude):
     # FUNCTION PURPOSE: Get physical wave parameters based on the reconstructed time series of the potential wave
     #
     # INPUTS:
@@ -1028,7 +1028,7 @@ def getParameters(data, wave, spatialResolution, waveAltIndex, wavelength):
     index = np.array([x[0] for x in enumerate(windVariance)])[windVariance <= 0.5 * np.max(windVariance)]
     index = np.append(index, argrelextrema(windVariance, np.less))  # Indices of all local minima & < half max power
     try:
-        peakIndex = np.where(windVariance == np.max(windVariance))
+        peakIndex = np.where(windVariance == np.max(windVariance))[0][0]
         if np.array([peakIndex > index]).all() or np.array([peakIndex < index]).all():  # If the peak is on the edge,
             maxes = np.array(argrelextrema(windVariance, np.greater)).flatten()
             peakIndex = maxes[windVariance[maxes].argsort()[::-1]][1]  # then pick the second highest local maximum
@@ -1110,6 +1110,9 @@ def getParameters(data, wave, spatialResolution, waveAltIndex, wavelength):
     # Potential temperature, from AMS (https://glossary.ametsoc.org/wiki/Potential_temperature)
     potentialTemp = (1000.0 ** (2 / 7)) * (data['T'] + 273.15) / (data['P'] ** (2 / 7))  # kelvin
 
+    # Density, [kg/m3]
+    density = data.loc[peakIndex,'D']
+
     # Brunt-Vaisala frequency squared, this equation assumes dry air, which is generally true @ altitude > ~16 km
     bvFreq2 = 9.81 / potentialTemp * np.gradient(potentialTemp, spatialResolution)  # Brunt-vaisala frequency squared
     # This is the most common equation w/ the most reasonable assumption, used by Wikipedia, MetPy, and other papers.
@@ -1143,14 +1146,23 @@ def getParameters(data, wave, spatialResolution, waveAltIndex, wavelength):
 
     # Vertical wavenumber [1/m]
     m = 2 * np.pi / wavelength
+
     # Horizontal wavenumber [1/m]
     kh = np.sqrt((m ** 2 / bvMean2) * (intrinsicF ** 2 - coriolisF ** 2))  # Murphy (2014) Eqn B2
+
     # Intrinsic vertical wave velocity [m/s]
     intrinsicVerticalGroupVel = - (intrinsicF ** 2 - coriolisF ** 2) / (intrinsicF * m)  # Murphy (2014) Eqn B5
+    
+    # Momentum flux [Pa]
+    zonalMomentumFlux = - density * (intrinsicF * 9.81 / bvMean2) * np.mean( uTrim * tTrim.imag / np.mean(data['T'][leftIndex:rightIndex]) ) # Murphy (2014) Table 3
 
-    #zonalWaveNumber = kh * np.sin(theta)  # [1/m]
+    meridionalMomentumFlux = - density * (intrinsicF * 9.81 / bvMean2) * np.mean( vTrim * tTrim.imag / np.mean(data['T'][leftIndex:rightIndex]) )  # Murphy (2014) Table 3
 
-    #meridionalWaveNumber = kh * np.cos(theta)  # [1/m]
+    # Kinetic energy density [m2/s2]
+    kineticEnergy = 1 / 2 * ( np.mean(uTrim ** 2) + np.mean(vTrim ** 2) )  # Murphy (2014) Table 3
+
+    # Potential energy density [m2/s2]
+    potentialEnergy = 9.81 ** 2 / (2 * bvMean2) * np.mean( (tTrim.real / data['T'][leftIndex:rightIndex]) ** 2 )  # Murphy (2014) Table 3
 
     intrinsicVerticalPhaseSpeed = intrinsicF / m  # [m/s]
 
@@ -1161,14 +1173,19 @@ def getParameters(data, wave, spatialResolution, waveAltIndex, wavelength):
     intrinsicMeridionalGroupVel = kh * np.cos(theta) * bvMean2 / (intrinsicF * m ** 2)  # [m/s]
 
     intrinsicHorizGroupVel = np.sqrt(intrinsicZonalGroupVel ** 2 + intrinsicMeridionalGroupVel ** 2)  # [m/s]
+    
     # Horizontal wavelength [m]
     lambda_h = 2 * np.pi / kh
+    
     # Altitude of wave peak
     altitudeOfDetection = data['Alt'][waveAltIndex]
+    
     # Get latitude at index
     latitudeOfDetection = data['Lat.'][waveAltIndex]
+    
     # Get longitude at index
     longitudeOfDetection = data['Long.'][waveAltIndex]
+    
     # Get flight time at index
     timeOfDetection = data['Time'][waveAltIndex]
 
@@ -1193,10 +1210,17 @@ def getParameters(data, wave, spatialResolution, waveAltIndex, wavelength):
         'Latitude [deg]': latitudeOfDetection,
         'Longitude [deg]': longitudeOfDetection,
         'Date and Time [UTC]': timeOfDetection,
+        'Amplitude [m2/s2]': amplitude,
         'Vertical wavelength [km]': (2 * np.pi / m) / 1000,
         'Horizontal wavelength [km]': lambda_h / 1000,
+        'Zonal wavelength [km]': lambda_h * np.sin(theta) / 1000,
+        'Meridional wavelength [km]': lambda_h * np.cos(theta) / 1000,
         'Propagation direction [deg N from E]': theta * 180 / np.pi,
         'Axial ratio [no units]': axialRatio,
+        'Zonal momentum flux [Pa]': zonalMomentumFlux,
+        'Meridional momentum flux [Pa]': meridionalMomentumFlux,
+        'Kinetic energy density [J/kg]': kineticEnergy,
+        'Potential energy density [J/kg]': potentialEnergy,
         'Intrinsic vertical group velocity [m/s]': intrinsicVerticalGroupVel,
         'Intrinsic horizontal group velocity [m/s]': intrinsicHorizGroupVel,
         'Intrinsic vertical phase speed [m/s]': intrinsicVerticalPhaseSpeed,

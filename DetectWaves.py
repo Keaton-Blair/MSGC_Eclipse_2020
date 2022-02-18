@@ -59,7 +59,8 @@ for file in os.listdir( userInput.get('dataSource') ):
 
             # Perform stokes parameters analysis to find wave information and confirm/deny wave candidate
             parameters = getParameters(data, wave, spatialResolution, peaks[0, 1],
-                                       wavelets.get('wavelengths')[peaks[0, 0]])
+                                       wavelets.get('wavelengths')[peaks[0, 0]], 
+                                       wavelets.get('power')[peaks[0,0], peaks[0,1]])
 
             # Update pertinent variables to save current wave parameters, increment counters, and shorten peaks list
             waves, plottingInfo, peaks = saveParametersInLoop(waves, plottingInfo, parameters, region, peaks)

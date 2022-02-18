@@ -1,5 +1,50 @@
 {
-    "waves": {},
+    "waves": {
+        "wave1": {
+            "Altitude [km]": 18.188,
+            "Latitude [deg]": -38.86744883333333,
+            "Longitude [deg]": -71.42423416666666,
+            "Date and Time [UTC]": "2020-12-13 18:00:28.166667",
+            "Amplitude [m2/s2]": 1735.3299770678298,
+            "Vertical wavelength [km]": 1.4264409466418049,
+            "Horizontal wavelength [km]": 102.58706376939045,
+            "Zonal wavelength [km]": 17.188542691302953,
+            "Meridional wavelength [km]": 101.13683628121971,
+            "Propagation direction [deg N from E]": 9.645446729001705,
+            "Axial ratio [no units]": 3.3307354916674554,
+            "Zonal momentum flux [Pa]": -0.000982853769055833,
+            "Meridional momentum flux [Pa]": 2.561161086239017e-05,
+            "Kinetic energy density [J/kg]": 0.29534555987343847,
+            "Potential energy density [J/kg]": 0.46202650254494204,
+            "Intrinsic vertical group velocity [m/s]": -0.06296499615269154,
+            "Intrinsic horizontal group velocity [m/s]": 4.528329119240867,
+            "Intrinsic vertical phase speed [m/s]": 0.06920298411739077,
+            "Intrinsic horizontal phase speed [m/s]": 4.97695397863926,
+            "Degree of Polarization [no units]": 0.9566593293432202
+        },
+        "wave2": {
+            "Altitude [km]": 25.478,
+            "Latitude [deg]": -38.85404683333333,
+            "Longitude [deg]": -71.486909,
+            "Date and Time [UTC]": "2020-12-13 18:23:15.166667",
+            "Amplitude [m2/s2]": 493.475203920339,
+            "Vertical wavelength [km]": 1.1240218042925225,
+            "Horizontal wavelength [km]": 109.3861865716462,
+            "Zonal wavelength [km]": -85.97976188153002,
+            "Meridional wavelength [km]": 67.62261721851935,
+            "Propagation direction [deg N from E]": -51.815141144713714,
+            "Axial ratio [no units]": 2.689365808474734,
+            "Zonal momentum flux [Pa]": -0.0001375923654138523,
+            "Meridional momentum flux [Pa]": 0.00017244727844824376,
+            "Kinetic energy density [J/kg]": 0.1509014017836638,
+            "Potential energy density [J/kg]": 0.9966956027552017,
+            "Intrinsic vertical group velocity [m/s]": -0.03793194246236488,
+            "Intrinsic horizontal group velocity [m/s]": 3.691414632143001,
+            "Intrinsic vertical phase speed [m/s]": 0.044017910460886135,
+            "Intrinsic horizontal phase speed [m/s]": 4.283681462210705,
+            "Degree of Polarization [no units]": 0.9237040695960457
+        }
+    },
     "flightPath": {
         "time": [
             "2020-12-13T17:43:34.000000000",

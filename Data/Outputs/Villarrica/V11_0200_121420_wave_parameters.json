@@ -1,19 +1,26 @@
 {
     "waves": {
         "wave1": {
-            "Altitude [km]": 32.014,
-            "Latitude [deg]": -38.859635,
-            "Longitude [deg]": -71.39695575,
-            "Date and Time [UTC]": "2020-12-14 04:04:13.500000",
-            "Vertical wavelength [km]": 0.6540260577316168,
-            "Horizontal wavelength [km]": 32.492217287732416,
-            "Propagation direction [deg N from E]": 41.92548952867637,
-            "Axial ratio [no units]": 5.2998179364931355,
-            "Intrinsic vertical group velocity [m/s]": -0.04868212752815563,
-            "Intrinsic horizontal group velocity [m/s]": 2.4185431864291695,
-            "Intrinsic vertical phase speed [m/s]": 0.050479307144150894,
-            "Intrinsic horizontal phase speed [m/s]": 2.5078276268542696,
-            "Degree of Polarization [no units]": 0.9465096691834918
+            "Altitude [km]": 31.994,
+            "Latitude [deg]": -38.859403,
+            "Longitude [deg]": -71.39588,
+            "Date and Time [UTC]": "2020-12-14 04:04:10",
+            "Amplitude [m2/s2]": 801.4867280471076,
+            "Vertical wavelength [km]": 0.6611479345595224,
+            "Horizontal wavelength [km]": 31.86924219126586,
+            "Zonal wavelength [km]": 21.33643921360841,
+            "Meridional wavelength [km]": 23.672873917831634,
+            "Propagation direction [deg N from E]": 42.02844167104067,
+            "Axial ratio [no units]": 5.459115562482739,
+            "Zonal momentum flux [Pa]": -0.0025883048058616236,
+            "Meridional momentum flux [Pa]": -0.001977606502282173,
+            "Kinetic energy density [J/kg]": 0.5826077909095801,
+            "Potential energy density [J/kg]": 0.03914229863267338,
+            "Intrinsic vertical group velocity [m/s]": -0.05079878680515768,
+            "Intrinsic horizontal group velocity [m/s]": 2.4486484114854346,
+            "Intrinsic vertical phase speed [m/s]": 0.052562514595709584,
+            "Intrinsic horizontal phase speed [m/s]": 2.5336651909056305,
+            "Degree of Polarization [no units]": 0.9501211364923737
         }
     },
     "flightPath": {
